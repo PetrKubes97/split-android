@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/all"
+            android:icon="@drawable/ic_list_black_24dp"
+            android:title="@string/all" />
+    </group>
+
+    <group
+        android:id="@+id/groups_group"
+        android:checkableBehavior="all">
+
+        <item android:title="@string/groups">
+            <menu>
+                <group android:checkableBehavior="all">
+                    <item
+                        android:id="@+id/testgroup"
+                        android:icon="@drawable/ic_group_black_24dp"
+                        android:title="Voda 2017" />
+                    <item
+                        android:id="@+id/testgroup2"
+                        android:icon="@drawable/ic_group_black_24dp"
+                        android:title="Chata" />
+                    <item
+                        android:id="@+id/new_group"
+                        android:icon="@drawable/ic_add_black_24dp"
+                        android:title="@string/add_a_new_group" />
+                </group>
+            </menu>
+        </item>
+    </group>
+
+    <group
+        android:id="@+id/archive_group"
+        android:checkableBehavior="all">
+        <item
+            android:id="@+id/archive"
+            android:icon="@drawable/ic_archive_black_24dp"
+            android:title="@string/archive" />
+    </group>
+    <group
+        android:id="@+id/user_group"
+        android:checkableBehavior="all">
+        <item android:title="@string/user">
+            <menu>
+                <group android:checkableBehavior="all">
+                    <item
+                        android:id="@+id/settings"
+                        android:icon="@drawable/ic_settings_black_24dp"
+                        android:title="@string/settings" />
+                    <item
+                        android:id="@+id/log_out"
+                        android:icon="@drawable/ic_sentiment_dissatisfied_black_24dp"
+                        android:title="@string/log_out" />
+                </group>
+            </menu>
+        </item>
+    </group>
+
+
+</menu>
