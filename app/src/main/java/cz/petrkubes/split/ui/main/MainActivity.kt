@@ -31,9 +31,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     @BindView(R.id.drawer_layout)
     lateinit var drawer: DrawerLayout
 
-    @BindView(R.id.nav_view)
-    lateinit var navigationView: NavigationView
-
     @BindView(R.id.pager)
     lateinit var pager: ViewPager
 
@@ -61,7 +58,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toggle = ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.setDrawerListener(toggle)
         toggle.syncState()
-        navigationView.setNavigationItemSelectedListener(this)
+        //navigationView.setNavigationItemSelectedListener(this)
 
         // Set up tabs
         fragmentsAdapter = FragmentsAdapter(supportFragmentManager, applicationContext)

@@ -19,10 +19,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_toEndOf="@+id/imageView"
-        android:layout_toStartOf="@+id/imageView2"
         android:text="Petr Kubeš"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/textView"
@@ -31,7 +31,7 @@
         android:text="petrkubes1997@gmail.com"
         android:layout_below="@+id/textView2"
         android:layout_alignStart="@+id/textView2"
-        android:layout_toStartOf="@+id/imageView2" />" />
+        android:layout_alignParentEnd="true" />" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -40,14 +40,5 @@
         app:srcCompat="@mipmap/ic_launcher_round"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_expand_more_white_24dp"
-        android:layout_alignTop="@+id/textView2"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
