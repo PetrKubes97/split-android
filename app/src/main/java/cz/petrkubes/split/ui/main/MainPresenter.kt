@@ -1,11 +1,13 @@
 package cz.petrkubes.split.ui.main
 
+import android.annotation.SuppressLint
 import android.view.MenuItem
 import android.view.View
 import cz.petrkubes.split.R
 
 /**
- * Created by Petr Kubes on 10.7.17.
+ * @author Petr Kubes <petr.kubes@applifting.com>
+ * @since 19/07/2017.
  */
 class MainPresenter(var mainActivity: MainActivity) {
 
@@ -13,6 +15,7 @@ class MainPresenter(var mainActivity: MainActivity) {
         mainActivity.showSnackbar(view)
     }
 
+    @SuppressLint("PrivateResource")
     fun onNavigationItemSelected(item: MenuItem) {
         val id = item.itemId
         if (id % 2 == 0)

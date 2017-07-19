@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:padding="@dimen/nav_item_padding">
+
+    <ImageView
+        android:id="@+id/nav_item_ic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/icon"
+        app:srcCompat="@drawable/ic_list_black_24dp" />
+
+    <TextView
+        android:id="@+id/nav_item_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nav_item_ic"
+        android:layout_alignTop="@+id/nav_item_ic"
+        android:layout_marginStart="8dp"
+        android:layout_toEndOf="@+id/nav_item_ic"
+        android:gravity="center"
+        android:text="All your expenses"
+        android:textColor="@color/primary_text"
+        tools:ignore="HardcodedText" />
+
+</RelativeLayout>

@@ -1,37 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingRight="8dp">
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
 
-    <RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingEnd="8dp"
+    tools:ignore="RtlSymmetry">
+
+    <cz.petrkubes.split.ui.main.components.NavMenuItem
+        android:id="@+id/test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/nav_item_padding"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground">
-
-        <ImageView
-            android:id="@+id/nav_ic_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/ic_list_black_24dp" />
-
-        <TextView
-            android:id="@+id/nav_tv_all"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nav_ic_all"
-            android:layout_alignTop="@+id/nav_ic_all"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/nav_ic_all"
-            android:gravity="center"
-            android:text="All your expenses"
-            android:textColor="@color/primary_text" />
-    </RelativeLayout>
+        custom:icon="@drawable/ic_list_black_24dp"
+        custom:text="All Your Debts" />
 
     <View
         android:layout_width="match_parent"
@@ -49,18 +32,18 @@
             android:layout_toStartOf="@+id/btn_create_group"
             android:gravity="center_vertical"
             android:padding="@dimen/nav_item_padding"
-            android:text="Groups" />
+            android:text="@string/groups" />
 
         <Button
             android:id="@+id/btn_create_group"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:minHeight="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="+ Add/Connect a group"
-            android:textSize="12sp"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:minHeight="0dp"
+            android:text="@string/add_a_new_group"
+            android:textSize="12sp" />
     </RelativeLayout>
 
 
@@ -70,61 +53,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <RelativeLayout
+        <cz.petrkubes.split.ui.main.components.NavMenuItem
+            android:id="@+id/group1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:padding="@dimen/nav_item_padding"
-            android:background="?android:attr/selectableItemBackground">
+            custom:icon="@drawable/ic_group_black_24dp"
+            custom:text="Voda 2017" />
 
-            <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:srcCompat="@drawable/ic_group_black_24dp" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView3"
-                android:layout_alignTop="@+id/imageView3"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/imageView3"
-                android:gravity="center"
-                android:text="Voda 2017"
-                android:textColor="@color/primary_text" />
-        </RelativeLayout>
-
-        <RelativeLayout
+        <cz.petrkubes.split.ui.main.components.NavMenuItem
+            android:id="@+id/group2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:clickable="true"
-            android:padding="@dimen/nav_item_padding"
-            android:background="?android:attr/selectableItemBackground">
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                app:srcCompat="@drawable/ic_group_black_24dp" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/imageView1"
-                android:layout_alignTop="@+id/imageView1"
-                android:layout_marginStart="8dp"
-                android:layout_toEndOf="@+id/imageView1"
-                android:gravity="center"
-                android:text="Chata"
-                android:textColor="@color/primary_text" />
-        </RelativeLayout>
+            custom:icon="@drawable/ic_group_black_24dp"
+            custom:text="Tábor" />
     </LinearLayout>
 
     <View
@@ -132,33 +73,12 @@
         android:layout_height="1dp"
         android:background="@color/divider" />
 
-    <RelativeLayout
+    <cz.petrkubes.split.ui.main.components.NavMenuItem
+        android:id="@+id/archive"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/nav_item_padding"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground">
-
-        <ImageView
-            android:id="@+id/nav_ic_archive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/ic_archive_black_24dp" />
-
-        <TextView
-            android:id="@+id/nav_tv_archive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nav_ic_archive"
-            android:layout_alignTop="@+id/nav_ic_archive"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/nav_ic_archive"
-            android:gravity="center"
-            android:text="Archive"
-            android:textColor="@color/primary_text" />
-    </RelativeLayout>
+        custom:icon="@drawable/ic_archive_black_24dp"
+        custom:text="@string/archive" />
 
     <View
         android:layout_width="match_parent"
@@ -177,47 +97,26 @@
             android:layout_toStartOf="@+id/btn_find_friend"
             android:gravity="center_vertical"
             android:padding="@dimen/nav_item_padding"
-            android:text="Friends" />
+            android:text="@string/friends" />
 
         <Button
             android:id="@+id/btn_find_friend"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:minHeight="0dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:text="+ Connect with a friend"
-            android:textSize="12sp"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:minHeight="0dp"
+            android:text="@string/connect_friend"
+            android:textSize="12sp" />
     </RelativeLayout>
 
-    <RelativeLayout
+    <cz.petrkubes.split.ui.main.components.NavMenuItem
+        android:id="@+id/friends"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/nav_item_padding"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground">
-
-        <ImageView
-            android:id="@+id/nav_ic_friends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/ic_people_outline_black_24dp" />
-
-        <TextView
-            android:id="@+id/nav_tv_friends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nav_ic_friends"
-            android:layout_alignTop="@+id/nav_ic_friends"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/nav_ic_friends"
-            android:gravity="center"
-            android:text="Friends"
-            android:textColor="@color/primary_text" />
-    </RelativeLayout>
+        custom:icon="@drawable/ic_people_outline_black_24dp"
+        custom:text="All your connected friends" />
 
     <View
         android:layout_width="match_parent"
@@ -227,67 +126,22 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Me"
         android:gravity="center_vertical"
         android:padding="@dimen/nav_item_padding"
-        android:layout_toStartOf="@+id/btn_find_friend"
-        android:layout_alignBottom="@+id/btn_find_friend"
-        android:layout_alignTop="@+id/btn_find_friend"/>
+        android:text="@string/me" />
 
-    <RelativeLayout
+    <cz.petrkubes.split.ui.main.components.NavMenuItem
+        android:id="@+id/settings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/nav_item_padding"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground">
+        custom:icon="@drawable/ic_settings_black_24dp"
+        custom:text="@string/settings" />
 
-        <ImageView
-            android:id="@+id/nav_ic_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/ic_settings_black_24dp" />
-
-        <TextView
-            android:id="@+id/nav_tv_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nav_ic_settings"
-            android:layout_alignTop="@+id/nav_ic_settings"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/nav_ic_settings"
-            android:gravity="center"
-            android:text="Settings"
-            android:textColor="@color/primary_text" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <cz.petrkubes.split.ui.main.components.NavMenuItem
+        android:id="@+id/logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/nav_item_padding"
-        android:clickable="true"
-        android:background="?android:attr/selectableItemBackground">
-
-        <ImageView
-            android:id="@+id/nav_ic_log_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/ic_sentiment_dissatisfied_black_24dp" />
-
-        <TextView
-            android:id="@+id/nav_tv_log_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/nav_ic_log_out"
-            android:layout_alignTop="@+id/nav_ic_log_out"
-            android:layout_marginStart="8dp"
-            android:layout_toEndOf="@+id/nav_ic_log_out"
-            android:gravity="center"
-            android:text="Log out"
-            android:textColor="@color/primary_text" />
-    </RelativeLayout>
+        custom:icon="@drawable/ic_sentiment_dissatisfied_black_24dp"
+        custom:text="@string/log_out" />
 
 </LinearLayout>
