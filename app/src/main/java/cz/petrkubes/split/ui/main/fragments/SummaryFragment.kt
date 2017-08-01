@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.tabs.expenses
+package cz.petrkubes.split.ui.main.fragments.expenses
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import cz.petrkubes.split.R
 class SummaryFragment : android.support.v4.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (inflater != null) {
-            return inflater.inflate(R.layout.fragment_expenses, null)
+            return inflater.inflate(R.layout.fragment_payments, null)
         } else {
             return super.onCreateView(inflater, container, savedInstanceState)
         }

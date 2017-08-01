@@ -7,7 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="all">All</string>
     <string name="groups">Groups</string>
-    <string name="add_a_new_group">Add a new group</string>
+    <string name="add_a_new_group">+ Add a new group</string>
     <string name="archive">Archive</string>
     <string name="user">User</string>
     <string name="settings">Settings</string>
@@ -20,4 +20,5 @@
     <string name="connect_friend">+ Connect with a friend</string>
     <string name="me">Me</string>
     <string name="icon">icon</string>
+    <string name="test"><b>Petr</b> owes <b>Honza</b> 50 Kč for something.</string>
 </resources>

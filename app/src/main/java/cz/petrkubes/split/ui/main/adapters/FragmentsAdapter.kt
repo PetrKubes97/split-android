@@ -5,9 +5,9 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import cz.petrkubes.split.R
-import cz.petrkubes.split.ui.main.tabs.expenses.ExpensesFragment
-import cz.petrkubes.split.ui.main.tabs.expenses.PeopleFragment
-import cz.petrkubes.split.ui.main.tabs.expenses.SummaryFragment
+import cz.petrkubes.split.ui.main.fragments.PaymentsFragment
+import cz.petrkubes.split.ui.main.fragments.expenses.PeopleFragment
+import cz.petrkubes.split.ui.main.fragments.expenses.SummaryFragment
 
 
 /**
@@ -17,7 +17,7 @@ class FragmentsAdapter(fm: FragmentManager, var context: Context) : FragmentPage
 
     override fun getItem(i: Int): Fragment {
         when (i) {
-            0 -> return ExpensesFragment()
+            0 -> return PaymentsFragment()
             1 -> return PeopleFragment()
             else -> return SummaryFragment()
         }

@@ -19,6 +19,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 dependencies {
@@ -26,37 +30,26 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support:design:26.+'
+    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
+    compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Libs
-    compile 'com.jakewharton:butterknife:8.7.0'
-    kapt 'com.jakewharton:butterknife-compiler:8.7.0'
     compile 'io.reactivex.rxjava2:rxkotlin:2.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
 
+    kapt "com.android.databinding:compiler:2.3.3"
+
+    // DB flow
     def dbflow_version = "4.0.4"
-    // or dbflow_version = "develop-SNAPSHOT" for grabbing latest dependency in your project on the develop branch
-    // or 10-digit short-hash of a specific commit. (Useful for bugs fixed in develop, but not in a release yet)
-
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-
-    // use kapt for kotlin apt if you're a Kotlin user
     kapt "com.github.Raizlabs.DBFlow:dbflow-processor:${dbflow_version}"
-
     compile "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
     compile "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-
-    // kotlin extensions
     compile "com.github.Raizlabs.DBFlow:dbflow-kotlinextensions:${dbflow_version}"
-
-    // RXJava 2 support
     compile "com.github.Raizlabs.DBFlow:dbflow-rx2:${dbflow_version}"
-
-    // RXJava 2 Kotlin Extensions Support
     compile "com.github.Raizlabs.DBFlow:dbflow-rx2-kotlinextensions:${dbflow_version}"
 }
 

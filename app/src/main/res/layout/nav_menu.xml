@@ -1,147 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+<layout>
 
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingEnd="8dp"
-    tools:ignore="RtlSymmetry">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
 
-    <cz.petrkubes.split.ui.main.components.NavMenuItem
-        android:id="@+id/test"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        custom:icon="@drawable/ic_list_black_24dp"
-        custom:text="All Your Debts" />
+        android:orientation="vertical"
+        android:paddingEnd="8dp"
+        tools:ignore="RtlSymmetry">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/tv_create_group"
-            android:layout_width="wrap_content"
+        <cz.petrkubes.split.ui.main.components.NavMenuItem
+            android:id="@+id/test"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/btn_create_group"
+            custom:icon="@drawable/ic_list_black_24dp"
+            custom:text="All Your Debts" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_create_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/btn_create_group"
+                android:gravity="center_vertical"
+                android:padding="@dimen/nav_item_padding"
+                android:text="@string/groups" />
+
+            <Button
+                android:id="@+id/btn_create_group"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:minHeight="0dp"
+                android:text="@string/add_a_new_group"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_groups_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <cz.petrkubes.split.ui.main.components.NavMenuItem
+                android:id="@+id/group1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:icon="@drawable/ic_group_black_24dp"
+                custom:text="Voda 2017" />
+
+            <cz.petrkubes.split.ui.main.components.NavMenuItem
+                android:id="@+id/group2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:icon="@drawable/ic_group_black_24dp"
+                custom:text="Tábor" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <cz.petrkubes.split.ui.main.components.NavMenuItem
+            android:id="@+id/archive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            custom:icon="@drawable/ic_archive_black_24dp"
+            custom:text="@string/archive" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_friends"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/btn_find_friend"
+                android:gravity="center_vertical"
+                android:padding="@dimen/nav_item_padding"
+                android:text="@string/friends" />
+
+            <Button
+                android:id="@+id/btn_find_friend"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:minHeight="0dp"
+                android:text="@string/connect_friend"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <cz.petrkubes.split.ui.main.components.NavMenuItem
+            android:id="@+id/friends"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            custom:icon="@drawable/ic_people_outline_black_24dp"
+            custom:text="All your connected friends" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:padding="@dimen/nav_item_padding"
-            android:text="@string/groups" />
-
-        <Button
-            android:id="@+id/btn_create_group"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:minHeight="0dp"
-            android:text="@string/add_a_new_group"
-            android:textSize="12sp" />
-    </RelativeLayout>
-
-
-    <LinearLayout
-        android:id="@+id/ll_groups_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+            android:text="@string/me" />
 
         <cz.petrkubes.split.ui.main.components.NavMenuItem
-            android:id="@+id/group1"
+            android:id="@+id/settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            custom:icon="@drawable/ic_group_black_24dp"
-            custom:text="Voda 2017" />
+            custom:icon="@drawable/ic_settings_black_24dp"
+            custom:text="@string/settings" />
 
         <cz.petrkubes.split.ui.main.components.NavMenuItem
-            android:id="@+id/group2"
+            android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            custom:icon="@drawable/ic_group_black_24dp"
-            custom:text="Tábor" />
+            custom:icon="@drawable/ic_sentiment_dissatisfied_black_24dp"
+            custom:text="@string/log_out" />
+
     </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
-    <cz.petrkubes.split.ui.main.components.NavMenuItem
-        android:id="@+id/archive"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:icon="@drawable/ic_archive_black_24dp"
-        custom:text="@string/archive" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:id="@+id/tv_friends"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_toStartOf="@+id/btn_find_friend"
-            android:gravity="center_vertical"
-            android:padding="@dimen/nav_item_padding"
-            android:text="@string/friends" />
-
-        <Button
-            android:id="@+id/btn_find_friend"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:minHeight="0dp"
-            android:text="@string/connect_friend"
-            android:textSize="12sp" />
-    </RelativeLayout>
-
-    <cz.petrkubes.split.ui.main.components.NavMenuItem
-        android:id="@+id/friends"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:icon="@drawable/ic_people_outline_black_24dp"
-        custom:text="All your connected friends" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/divider" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="@dimen/nav_item_padding"
-        android:text="@string/me" />
-
-    <cz.petrkubes.split.ui.main.components.NavMenuItem
-        android:id="@+id/settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:icon="@drawable/ic_settings_black_24dp"
-        custom:text="@string/settings" />
-
-    <cz.petrkubes.split.ui.main.components.NavMenuItem
-        android:id="@+id/logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        custom:icon="@drawable/ic_sentiment_dissatisfied_black_24dp"
-        custom:text="@string/log_out" />
-
-</LinearLayout>
+</layout>
