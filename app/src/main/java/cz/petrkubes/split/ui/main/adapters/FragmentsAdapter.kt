@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import cz.petrkubes.split.R
 import cz.petrkubes.split.ui.main.fragments.PaymentsFragment
-import cz.petrkubes.split.ui.main.fragments.expenses.PeopleFragment
+import cz.petrkubes.split.ui.main.fragments.expenses.FriendsFragment
 import cz.petrkubes.split.ui.main.fragments.expenses.SummaryFragment
 
 
@@ -18,19 +18,19 @@ class FragmentsAdapter(fm: FragmentManager, var context: Context) : FragmentPage
     override fun getItem(i: Int): Fragment {
         when (i) {
             0 -> return PaymentsFragment()
-            1 -> return PeopleFragment()
+            1 -> return FriendsFragment()
             else -> return SummaryFragment()
         }
     }
 
     override fun getCount(): Int {
-        return 3
+        return 2
     }
 
     override fun getPageTitle(position: Int): CharSequence {
         when (position) {
             0 -> return context.getString(R.string.expenses)
-            0 -> return context.getString(R.string.people)
+            1 -> return context.getString(R.string.friends)
             else -> return context.getString(R.string.summary)
         }
     }
