@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main
+package cz.petrkubes.split.ui.main.model.data
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>

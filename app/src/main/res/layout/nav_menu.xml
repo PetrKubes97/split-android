@@ -11,7 +11,7 @@
         android:paddingEnd="8dp"
         tools:ignore="RtlSymmetry">
 
-        <cz.petrkubes.split.ui.main.components.NavMenuItem
+        <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
             android:id="@+id/test"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,14 +56,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <cz.petrkubes.split.ui.main.components.NavMenuItem
+            <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
                 android:id="@+id/group1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:icon="@drawable/ic_group_black_24dp"
                 custom:text="Voda 2017" />
 
-            <cz.petrkubes.split.ui.main.components.NavMenuItem
+            <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
                 android:id="@+id/group2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
             android:layout_height="1dp"
             android:background="@color/divider" />
 
-        <cz.petrkubes.split.ui.main.components.NavMenuItem
+        <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
             android:id="@+id/archive"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                 android:textSize="12sp" />
         </RelativeLayout>
 
-        <cz.petrkubes.split.ui.main.components.NavMenuItem
+        <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
             android:id="@+id/friends"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -133,14 +133,14 @@
             android:padding="@dimen/nav_item_padding"
             android:text="@string/me" />
 
-        <cz.petrkubes.split.ui.main.components.NavMenuItem
+        <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
             android:id="@+id/settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             custom:icon="@drawable/ic_settings_black_24dp"
             custom:text="@string/settings" />
 
-        <cz.petrkubes.split.ui.main.components.NavMenuItem
+        <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

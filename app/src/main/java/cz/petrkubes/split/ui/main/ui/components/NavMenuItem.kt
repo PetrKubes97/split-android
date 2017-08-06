@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.components
+package cz.petrkubes.split.ui.main.ui.components
 
 import android.content.Context
 import android.databinding.DataBindingUtil

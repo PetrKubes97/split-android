@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.fragments.expenses
+package cz.petrkubes.split.ui.main.ui.fragments.summary
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import cz.petrkubes.split.R
 
 /**
- * Created by Petr Kubes on 15.7.17.
- */
+* @author Petr Kubes <petr.kubes@applifting.cz>
+* @since 06/08/2017
+*/
 class SummaryFragment : android.support.v4.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (inflater != null) {

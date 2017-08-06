@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.fragments
+package cz.petrkubes.split.ui.main.ui.fragments.payments
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.FragmentPaymentsBinding
-import cz.petrkubes.split.ui.main.adapters.PaymentsAdapter
+import cz.petrkubes.split.ui.main.ui.adapters.PaymentsAdapter
 
 /**
 * @author Petr Kubes <petr.kubes@applifting.cz>

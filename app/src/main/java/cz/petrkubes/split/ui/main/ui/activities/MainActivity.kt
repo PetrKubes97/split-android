@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main
+package cz.petrkubes.split.ui.main.ui.activities
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityMainBinding
-import cz.petrkubes.split.ui.main.adapters.FragmentsAdapter
+import cz.petrkubes.split.ui.main.ui.adapters.FragmentsAdapter
 
 class MainActivity : AppCompatActivity() {
 

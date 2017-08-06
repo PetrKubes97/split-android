@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.adapters
+package cz.petrkubes.split.ui.main.ui.adapters
 
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
