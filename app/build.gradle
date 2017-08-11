@@ -37,6 +37,7 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Libs
+    compile 'com.facebook.stetho:stetho:1.5.0'
     compile 'io.reactivex.rxjava2:rxkotlin:2.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
 
@@ -48,6 +49,7 @@ dependencies {
     // Google Room library
     compile "android.arch.persistence.room:runtime:1.0.0-alpha5"
     annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha5"
+    kapt "android.arch.persistence.room:compiler:1.0.0-alpha5"
     compile "android.arch.persistence.room:rxjava2:1.0.0-alpha5"
 
     kapt "com.android.databinding:compiler:2.3.3"

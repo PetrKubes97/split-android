@@ -12,7 +12,7 @@
         tools:ignore="RtlSymmetry">
 
         <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
-            android:id="@+id/test"
+            android:id="@+id/allDebts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             custom:icon="@drawable/ic_list_black_24dp"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_create_group"
+                android:id="@+id/labelCreateGroup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -38,7 +38,7 @@
                 android:text="@string/groups" />
 
             <Button
-                android:id="@+id/btn_create_group"
+                android:id="@+id/btnCreateGroup"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
 
 
         <LinearLayout
-            android:id="@+id/ll_groups_container"
+            android:id="@+id/groupsContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -93,17 +93,17 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tv_friends"
+                android:id="@+id/labelFriends"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_toStartOf="@+id/btn_find_friend"
+                android:layout_toStartOf="@+id/btnAddFriend"
                 android:gravity="center_vertical"
                 android:padding="@dimen/nav_item_padding"
                 android:text="@string/friends" />
 
             <Button
-                android:id="@+id/btn_find_friend"
+                android:id="@+id/btnAddFriend"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

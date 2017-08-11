@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.main.ui.activities.debt.DebtActivity"></activity>
+        <activity
+            android:name=".ui.main.ui.activities.debt.DebtActivity"
+            android:parentActivityName=".ui.main.ui.activities.main.MainActivity" />
     </application>
 
 </manifest>

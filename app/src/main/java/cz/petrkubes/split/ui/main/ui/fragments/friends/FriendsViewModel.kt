@@ -16,7 +16,7 @@ class FriendsViewModel : ViewModel() {
         friends.value = mutableListOf()
 
         for (i in 0..9) {
-            friends.value?.add(Friend(i, "asdf"))
+            friends.value?.add(Friend("asdf"))
         }
     }
 
