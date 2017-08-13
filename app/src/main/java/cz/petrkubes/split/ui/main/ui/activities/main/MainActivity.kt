@@ -16,7 +16,7 @@ import android.view.Menu
 import android.view.MenuItem
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityMainBinding
-import cz.petrkubes.split.ui.main.ui.activities.debt.DebtActivity
+import cz.petrkubes.split.ui.main.ui.activities.payment.PaymentActivity
 import cz.petrkubes.split.ui.main.ui.adapters.FragmentsAdapter
 import cz.petrkubes.split.ui.main.ui.dialogs.AddFriendDialog
 import cz.petrkubes.split.ui.main.util.debtRequestcode
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
 
         // FAB
         binding.fab.setOnClickListener { view ->
-            val intent = Intent(this, DebtActivity::class.java)
+            val intent = Intent(this, PaymentActivity::class.java)
             startActivityForResult(intent, debtRequestcode)
         }
 

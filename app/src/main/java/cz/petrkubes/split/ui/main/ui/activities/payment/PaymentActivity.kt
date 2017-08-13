@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.activities.debt
+package cz.petrkubes.split.ui.main.ui.activities.payment
 
 import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.ViewModelProviders
@@ -6,11 +6,11 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityDebtBinding
-import cz.petrkubes.split.ui.main.model.data.Debt
+import cz.petrkubes.split.ui.main.model.data.Payment
 
-class DebtActivity : LifecycleActivity() {
+class PaymentActivity : LifecycleActivity() {
 
-    lateinit var viewModel: DebtActivityViewModel
+    lateinit var viewModel: PaymentActivityViewModel
     lateinit var binding: ActivityDebtBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class DebtActivity : LifecycleActivity() {
         actionBar.setDisplayHomeAsUpEnabled(true)
 
         // Set up view model
-        viewModel = ViewModelProviders.of(this).get(DebtActivityViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(PaymentActivityViewModel::class.java)
 
         binding.floatingActionButton.setOnClickListener {
 
@@ -32,8 +32,9 @@ class DebtActivity : LifecycleActivity() {
     }
 
     fun validateAndSaveTheDebt() {
-        val debt: Debt = Debt(0, binding.textNote.text.toString())
-        viewModel.saveDebt(debt)
+        val debt: Payment = Payment(0, 0)
+        debt.note = binding.textNote.text.toString()
+        viewModel.savePayment(debt)
     }
 
 

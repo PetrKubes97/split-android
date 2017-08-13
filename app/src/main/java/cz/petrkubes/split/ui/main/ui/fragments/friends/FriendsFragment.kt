@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.FragmentRecyclerViewBinding
-import cz.petrkubes.split.ui.main.model.data.Friend
+import cz.petrkubes.split.ui.main.model.data.User
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
 
 
@@ -24,17 +24,17 @@ class FriendsFragment : LifecycleFragment() {
     private lateinit var friendsViewModel: FriendsViewModel
     private lateinit var binding: FragmentRecyclerViewBinding
 
-    private var friends: MutableList<Friend> = mutableListOf()
+    private var users: MutableList<User> = mutableListOf()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         friendsViewModel = ViewModelProviders.of(this).get(FriendsViewModel::class.java)
 
-        friendsViewModel.friends.observe(this, Observer<MutableList<Friend>> {
+        friendsViewModel.friends.observe(this, Observer<MutableList<User>> {
             observedFriends ->
                 if (observedFriends != null) {
-                    friends.clear()
-                    friends.addAll(observedFriends)
+                    users.clear()
+                    users.addAll(observedFriends)
                 }
 
                 binding.recyclerView.adapter.notifyDataSetChanged()
@@ -48,7 +48,7 @@ class FriendsFragment : LifecycleFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
 
         // Add data to listview
-        val adapter: RecyclerViewAdapter = RecyclerViewAdapter(friends, R.layout.item_friend)
+        val adapter: RecyclerViewAdapter = RecyclerViewAdapter(users, R.layout.item_friend)
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
 

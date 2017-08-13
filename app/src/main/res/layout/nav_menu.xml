@@ -100,7 +100,7 @@
                 android:layout_toStartOf="@+id/btnAddFriend"
                 android:gravity="center_vertical"
                 android:padding="@dimen/nav_item_padding"
-                android:text="@string/friends" />
+                android:text="@string/users" />
 
             <Button
                 android:id="@+id/btnAddFriend"
@@ -115,11 +115,11 @@
         </RelativeLayout>
 
         <cz.petrkubes.split.ui.main.ui.components.NavMenuItem
-            android:id="@+id/friends"
+            android:id="@+id/users"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             custom:icon="@drawable/ic_people_outline_black_24dp"
-            custom:text="All your connected friends" />
+            custom:text="All your connected users" />
 
         <View
             android:layout_width="match_parent"

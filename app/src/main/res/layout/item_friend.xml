@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="cz.petrkubes.split.ui.main.model.data.Friend" />
+            type="cz.petrkubes.split.ui.main.model.data.User" />
 
     </data>
 

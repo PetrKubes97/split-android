@@ -5,8 +5,8 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import cz.petrkubes.split.R
-import cz.petrkubes.split.ui.main.ui.fragments.payments.PaymentsFragment
 import cz.petrkubes.split.ui.main.ui.fragments.friends.FriendsFragment
+import cz.petrkubes.split.ui.main.ui.fragments.payments.PaymentsFragment
 import cz.petrkubes.split.ui.main.ui.fragments.summary.SummaryFragment
 
 
@@ -30,7 +30,7 @@ class FragmentsAdapter(fm: FragmentManager, var context: Context) : FragmentPage
     override fun getPageTitle(position: Int): CharSequence {
         when (position) {
             0 -> return context.getString(R.string.expenses)
-            1 -> return context.getString(R.string.friends)
+            1 -> return context.getString(R.string.users)
             else -> return context.getString(R.string.summary)
         }
     }

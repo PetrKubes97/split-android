@@ -6,14 +6,14 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import cz.petrkubes.split.ui.main.model.data.Friend
+import cz.petrkubes.split.ui.main.model.data.User
 
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 05/08/2017
  */
-class RecyclerViewAdapter(var data: MutableList<Friend>, val itemLayout: Int) : RecyclerView.Adapter<ViewHolder>() {
+class RecyclerViewAdapter(var data: MutableList<User>, val itemLayout: Int) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.getContext())

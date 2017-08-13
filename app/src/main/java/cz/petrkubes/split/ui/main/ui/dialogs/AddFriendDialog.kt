@@ -5,7 +5,7 @@ import android.app.AlertDialog
 import android.databinding.DataBindingUtil
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.DialogAddFriendBinding
-import cz.petrkubes.split.ui.main.model.data.Friend
+import cz.petrkubes.split.ui.main.model.data.User
 import cz.petrkubes.split.ui.main.ui.activities.main.MainActivityViewModel
 
 /**
@@ -16,12 +16,12 @@ class AddFriendDialog(activity: Activity, val viewModel: MainActivityViewModel) 
 
     val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
     val binding: DialogAddFriendBinding = DataBindingUtil.inflate(activity.layoutInflater, R.layout.dialog_add_friend, null, false)
-    lateinit var dialog: AlertDialog
+    var dialog: AlertDialog
 
     init {
         builder.setView(binding.root)
         builder.setPositiveButton("Add", {dialog, i ->
-            viewModel.saveFriend(Friend("Pert"))
+            viewModel.saveFriend(User("Pert"))
         })
 
         dialog = builder.create()

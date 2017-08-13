@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.ui.activities.debt.DebtActivity"
+            android:name=".ui.main.ui.activities.payment.PaymentActivity"
             android:parentActivityName=".ui.main.ui.activities.main.MainActivity" />
     </application>
 

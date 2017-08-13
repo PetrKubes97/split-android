@@ -52,6 +52,9 @@ dependencies {
     kapt "android.arch.persistence.room:compiler:1.0.0-alpha5"
     compile "android.arch.persistence.room:rxjava2:1.0.0-alpha5"
 
+    // JodaTime
+    compile 'net.danlew:android.joda:2.9.9'
+
     kapt "com.android.databinding:compiler:2.3.3"
 }
 

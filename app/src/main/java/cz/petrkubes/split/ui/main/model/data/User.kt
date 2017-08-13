@@ -9,8 +9,10 @@ import android.arch.persistence.room.PrimaryKey
  */
 
 @Entity
-class Friend(name: String) {
-    @PrimaryKey (autoGenerate = true)
-    public var id: Int = 0
-    public var name: String = ""
+class User(var name: String) {
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0
+    var synced: Boolean = false
+    var email: String? = null
+    var isCurrentUser = false
 }

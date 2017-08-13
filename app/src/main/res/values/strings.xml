@@ -16,8 +16,8 @@
     <string name="expenses">Expenses</string>
     <string name="people">People</string>
     <string name="summary">Summary</string>
-    <string name="friends">Friends</string>
-    <string name="connect_friend">+ Connect with a friend</string>
+    <string name="users">Friends</string>
+    <string name="connect_friend">+ Connect with a user</string>
     <string name="me">Me</string>
     <string name="icon">icon</string>
     <string name="test"><b>Petr</b> owes <b>Honza</b> 50 Kč for something.</string>

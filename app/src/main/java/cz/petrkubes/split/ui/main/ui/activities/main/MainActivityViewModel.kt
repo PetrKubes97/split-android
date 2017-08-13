@@ -5,7 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.persistence.room.Room
-import cz.petrkubes.split.ui.main.model.data.Friend
+import cz.petrkubes.split.ui.main.model.data.User
 import cz.petrkubes.split.ui.main.model.database.Database
 
 /**
@@ -14,22 +14,22 @@ import cz.petrkubes.split.ui.main.model.database.Database
  */
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
 
-    private lateinit var friendLD: MutableLiveData<Friend>
+    private lateinit var userLD: MutableLiveData<User>
 
     val database: Database = Room.databaseBuilder(application.applicationContext, Database::class.java, "split-db").build()
 
-    fun saveFriend(friend: Friend) {
+    fun saveFriend(user: User) {
 
         val task: Runnable = Runnable {
-            database.friendDao().insert(friend)
+            database.userDao().insert(user)
         }
 
         val thread = Thread(task)
         thread.start()
     }
 
-    fun getFriends(): LiveData<Friend> {
-        return database.friendDao().getAll()
+    fun getFriends(): LiveData<User> {
+        return database.userDao().getAll()
     }
 
 }
