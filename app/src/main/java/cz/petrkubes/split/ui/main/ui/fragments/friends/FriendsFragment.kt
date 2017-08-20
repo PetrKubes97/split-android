@@ -11,7 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.FragmentRecyclerViewBinding
-import cz.petrkubes.split.ui.main.model.data.User
+import cz.petrkubes.split.ui.main.core.data.User
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
 
 

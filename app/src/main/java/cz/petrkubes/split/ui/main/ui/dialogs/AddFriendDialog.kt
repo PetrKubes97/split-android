@@ -5,7 +5,7 @@ import android.app.AlertDialog
 import android.databinding.DataBindingUtil
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.DialogAddFriendBinding
-import cz.petrkubes.split.ui.main.model.data.User
+import cz.petrkubes.split.ui.main.core.data.User
 import cz.petrkubes.split.ui.main.ui.activities.main.MainActivityViewModel
 
 /**

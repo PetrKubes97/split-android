@@ -6,7 +6,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityDebtBinding
-import cz.petrkubes.split.ui.main.model.data.Payment
+import cz.petrkubes.split.ui.main.core.data.Payment
 
 class PaymentActivity : LifecycleActivity() {
 

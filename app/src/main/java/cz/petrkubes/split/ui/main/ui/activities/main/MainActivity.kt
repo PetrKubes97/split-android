@@ -16,21 +16,28 @@ import android.view.Menu
 import android.view.MenuItem
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityMainBinding
+import cz.petrkubes.split.ui.main.repositories.UserRepository
+import cz.petrkubes.split.ui.main.ui.App
+import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.activities.payment.PaymentActivity
 import cz.petrkubes.split.ui.main.ui.adapters.FragmentsAdapter
 import cz.petrkubes.split.ui.main.ui.dialogs.AddFriendDialog
 import cz.petrkubes.split.ui.main.util.debtRequestcode
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
 
     var lifecycleRegistry = LifecycleRegistry(this)
     lateinit var fragmentsAdapter: FragmentsAdapter
 
+    @Inject
+    lateinit var userRepository: UserRepository;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val viewModel: MainActivityViewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
+        val viewModel: MainActivityViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(MainActivityViewModel::class.java)
 
 
         // Set up action bar
@@ -51,7 +58,7 @@ class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
         binding.tabs.setupWithViewPager(binding.pager)
 
         // FAB
-        binding.fab.setOnClickListener { view ->
+        binding.fab.setOnClickListener { _ ->
             val intent = Intent(this, PaymentActivity::class.java)
             startActivityForResult(intent, debtRequestcode)
         }

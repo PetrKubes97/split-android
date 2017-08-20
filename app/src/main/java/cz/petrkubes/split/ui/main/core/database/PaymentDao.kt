@@ -1,8 +1,8 @@
-package cz.petrkubes.split.ui.main.model.database
+package cz.petrkubes.split.ui.main.core.database
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
-import cz.petrkubes.split.ui.main.model.data.Payment
+import cz.petrkubes.split.ui.main.core.data.Payment
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>

@@ -1,11 +1,11 @@
-package cz.petrkubes.split.ui.main.model.database
+package cz.petrkubes.split.ui.main.core.database
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
-import cz.petrkubes.split.ui.main.model.data.DebtToUserRelation
-import cz.petrkubes.split.ui.main.model.data.Group
-import cz.petrkubes.split.ui.main.model.data.Payment
-import cz.petrkubes.split.ui.main.model.data.User
+import cz.petrkubes.split.ui.main.core.data.DebtToUserRelation
+import cz.petrkubes.split.ui.main.core.data.Group
+import cz.petrkubes.split.ui.main.core.data.Payment
+import cz.petrkubes.split.ui.main.core.data.User
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>

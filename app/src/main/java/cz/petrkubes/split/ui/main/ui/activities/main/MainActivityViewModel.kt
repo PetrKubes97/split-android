@@ -1,35 +1,33 @@
 package cz.petrkubes.split.ui.main.ui.activities.main
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
-import android.arch.persistence.room.Room
-import cz.petrkubes.split.ui.main.model.data.User
-import cz.petrkubes.split.ui.main.model.database.Database
+import android.arch.lifecycle.ViewModel
+import cz.petrkubes.split.ui.main.core.data.User
+import cz.petrkubes.split.ui.main.di.MainComponent
+import cz.petrkubes.split.ui.main.repositories.UserRepository
+import javax.inject.Inject
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 06/08/2017
  */
-class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
+class MainActivityViewModel : ViewModel(), MainComponent.injectable {
 
     private lateinit var userLD: MutableLiveData<User>
 
-    val database: Database = Room.databaseBuilder(application.applicationContext, Database::class.java, "split-db").build()
+    @Inject
+    lateinit var userRepository: UserRepository
+
+    override fun inject(mainComponent: MainComponent) {
+        mainComponent.inject(this)
+    }
 
     fun saveFriend(user: User) {
-
-        val task: Runnable = Runnable {
-            database.userDao().insert(user)
-        }
-
-        val thread = Thread(task)
-        thread.start()
+        userRepository.saveFriend(user)
     }
 
-    fun getFriends(): LiveData<User> {
-        return database.userDao().getAll()
-    }
+    fun getFriends(): LiveData<User> = userRepository.getFriends()
+
 
 }

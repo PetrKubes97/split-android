@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.model.data
+package cz.petrkubes.split.ui.main.core.data
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Ignore
