@@ -1,7 +1,5 @@
 package cz.petrkubes.split.ui.main.ui.activities.main
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import cz.petrkubes.split.ui.main.core.data.User
 import cz.petrkubes.split.ui.main.di.MainComponent
@@ -14,8 +12,6 @@ import javax.inject.Inject
  */
 class MainActivityViewModel : ViewModel(), MainComponent.injectable {
 
-    private lateinit var userLD: MutableLiveData<User>
-
     @Inject
     lateinit var userRepository: UserRepository
 
@@ -26,8 +22,4 @@ class MainActivityViewModel : ViewModel(), MainComponent.injectable {
     fun saveFriend(user: User) {
         userRepository.saveFriend(user)
     }
-
-    fun getFriends(): LiveData<User> = userRepository.getFriends()
-
-
 }

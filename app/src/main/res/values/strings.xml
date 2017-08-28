@@ -21,4 +21,5 @@
     <string name="me">Me</string>
     <string name="icon">icon</string>
     <string name="test"><b>Petr</b> owes <b>Honza</b> 50 Kč for something.</string>
+    <string name="email_or_id">email or id</string>
 </resources>

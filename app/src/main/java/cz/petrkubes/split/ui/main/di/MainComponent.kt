@@ -2,9 +2,9 @@ package cz.petrkubes.split.ui.main.di
 
 import cz.petrkubes.split.ui.main.di.modules.CoreModule
 import cz.petrkubes.split.ui.main.di.modules.RepositoriesModule
-import cz.petrkubes.split.ui.main.repositories.UserRepository
 import cz.petrkubes.split.ui.main.ui.activities.main.MainActivity
 import cz.petrkubes.split.ui.main.ui.activities.main.MainActivityViewModel
+import cz.petrkubes.split.ui.main.ui.fragments.friends.FriendsViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -20,7 +20,7 @@ interface MainComponent {
 
     fun inject(viewModel: MainActivityViewModel)
 
-    fun getRepo(): UserRepository
+    fun inject(viewModel: FriendsViewModel)
 
     interface injectable {
         fun inject(mainComponent: MainComponent)

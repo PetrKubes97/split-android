@@ -1,7 +1,6 @@
 package cz.petrkubes.split.ui.main.ui.fragments.friends
 
 import android.arch.lifecycle.LifecycleFragment
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
@@ -12,7 +11,10 @@ import android.view.ViewGroup
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.FragmentRecyclerViewBinding
 import cz.petrkubes.split.ui.main.core.data.User
+import cz.petrkubes.split.ui.main.ui.App
+import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
+import io.reactivex.android.schedulers.AndroidSchedulers
 
 
 /**
@@ -28,19 +30,17 @@ class FriendsFragment : LifecycleFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        friendsViewModel = ViewModelProviders.of(this).get(FriendsViewModel::class.java)
+        friendsViewModel = ViewModelProviders.of(this, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
 
-        friendsViewModel.friends.observe(this, Observer<MutableList<User>> {
-            observedFriends ->
-                if (observedFriends != null) {
+        friendsViewModel.observableFriends()
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { observedFriends: List<User> ->
                     users.clear()
                     users.addAll(observedFriends)
+                    binding.recyclerView.adapter.notifyDataSetChanged()
                 }
 
-                binding.recyclerView.adapter.notifyDataSetChanged()
-        })
 
-        friendsViewModel.loadData()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,7 +48,7 @@ class FriendsFragment : LifecycleFragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
 
         // Add data to listview
-        val adapter: RecyclerViewAdapter = RecyclerViewAdapter(users, R.layout.item_friend)
+        val adapter = RecyclerViewAdapter(users, R.layout.item_friend)
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
 

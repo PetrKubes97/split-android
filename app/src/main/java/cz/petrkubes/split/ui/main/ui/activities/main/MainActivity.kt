@@ -2,7 +2,6 @@ package cz.petrkubes.split.ui.main.ui.activities.main
 
 import android.arch.lifecycle.LifecycleRegistry
 import android.arch.lifecycle.LifecycleRegistryOwner
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -11,7 +10,6 @@ import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import cz.petrkubes.split.R
@@ -49,7 +47,7 @@ class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
         toggle.syncState()
 
         // add friend dialog
-        val addFriendDialog = AddFriendDialog(this, viewModel)
+        val addFriendDialog = AddFriendDialog(this, binding, viewModel)
         binding.navMenu.btnAddFriend.setOnClickListener { addFriendDialog.show() }
 
         // Set up tabs
@@ -62,8 +60,6 @@ class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
             val intent = Intent(this, PaymentActivity::class.java)
             startActivityForResult(intent, debtRequestcode)
         }
-
-        viewModel.getFriends().observe(this, Observer { friend -> Log.d("asdf", "asdf") })
     }
 
     override fun onBackPressed() {

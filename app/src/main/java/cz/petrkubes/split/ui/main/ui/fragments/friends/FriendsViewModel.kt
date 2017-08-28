@@ -1,24 +1,25 @@
 package cz.petrkubes.split.ui.main.ui.fragments.friends
 
-import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.ViewModel
 import cz.petrkubes.split.ui.main.core.data.User
+import cz.petrkubes.split.ui.main.di.MainComponent
+import cz.petrkubes.split.ui.main.repositories.UserRepository
+import io.reactivex.Flowable
+import javax.inject.Inject
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 06/08/2017
  */
-class FriendsViewModel : ViewModel() {
+class FriendsViewModel : ViewModel(), MainComponent.injectable {
 
-    var friends: MutableLiveData<MutableList<User>> = MutableLiveData()
+    @Inject
+    lateinit var userRepository: UserRepository
 
-    fun loadData() {
-        friends.value = mutableListOf()
-
-        for (i in 0..9) {
-            friends.value?.add(User("asdf"))
-        }
+    override fun inject(mainComponent: MainComponent) {
+        mainComponent.inject(this)
     }
 
+    fun observableFriends(): Flowable<List<User>> = userRepository.getFriends()
 }
 
