@@ -17,7 +17,7 @@ class AddFriendDialog(activity: Activity, activityBinding: ActivityMainBinding, 
 
     private val builder: AlertDialog.Builder = AlertDialog.Builder(activity)
     private val binding: DialogAddFriendBinding = DataBindingUtil.inflate(activity.layoutInflater, R.layout.dialog_add_friend, null, false)
-    private var dialog: AlertDialog
+    private val dialog: AlertDialog
 
     init {
         builder.setView(binding.root)

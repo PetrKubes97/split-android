@@ -20,6 +20,7 @@ import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.activities.payment.PaymentActivity
 import cz.petrkubes.split.ui.main.ui.adapters.FragmentsAdapter
 import cz.petrkubes.split.ui.main.ui.dialogs.AddFriendDialog
+import cz.petrkubes.split.ui.main.ui.dialogs.CreateGroupDialog
 import cz.petrkubes.split.ui.main.util.debtRequestcode
 import javax.inject.Inject
 
@@ -37,7 +38,6 @@ class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val viewModel: MainActivityViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(MainActivityViewModel::class.java)
 
-
         // Set up action bar
         setSupportActionBar(binding.toolbar)
 
@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity(), LifecycleRegistryOwner {
         // add friend dialog
         val addFriendDialog = AddFriendDialog(this, binding, viewModel)
         binding.navMenu.btnAddFriend.setOnClickListener { addFriendDialog.show() }
+
+        // add group dialog
+        val createGroupDialog = CreateGroupDialog(this, binding, viewModel)
+        binding.navMenu.btnCreateGroup.setOnClickListener { createGroupDialog.show() }
 
         // Set up tabs
         fragmentsAdapter = FragmentsAdapter(supportFragmentManager, applicationContext)

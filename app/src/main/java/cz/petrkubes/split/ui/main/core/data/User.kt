@@ -15,4 +15,6 @@ class User(var name: String) {
     var synced: Boolean = false
     var email: String? = null
     var isCurrentUser = false
+
+    override fun toString(): String = name
 }
