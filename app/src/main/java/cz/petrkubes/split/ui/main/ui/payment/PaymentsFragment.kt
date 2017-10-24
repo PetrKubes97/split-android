@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.fragments.payments
+package cz.petrkubes.split.ui.main.ui.payment
 
 import android.databinding.DataBindingUtil
 import android.os.Bundle

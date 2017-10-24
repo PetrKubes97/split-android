@@ -5,7 +5,7 @@ import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import cz.petrkubes.split.ui.main.core.data.User
+import cz.petrkubes.split.ui.main.core.database.model.User
 
 
 /**
@@ -27,6 +27,4 @@ class RecyclerViewAdapter(var data: MutableList<User>, private val itemLayout: I
     }
 
     override fun getItemCount(): Int = data.size ?: 0
-
-
 }

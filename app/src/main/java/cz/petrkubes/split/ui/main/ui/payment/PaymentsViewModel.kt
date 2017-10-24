@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.fragments.summary
+package cz.petrkubes.split.ui.main.ui.payment
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>

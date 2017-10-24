@@ -1,13 +1,12 @@
-package cz.petrkubes.split.ui.main.ui.adapters
+package cz.petrkubes.split.ui.main.ui.main
 
 import android.content.Context
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import cz.petrkubes.split.R
-import cz.petrkubes.split.ui.main.ui.fragments.friends.FriendsFragment
-import cz.petrkubes.split.ui.main.ui.fragments.payments.PaymentsFragment
-import cz.petrkubes.split.ui.main.ui.fragments.summary.SummaryFragment
+import cz.petrkubes.split.ui.main.ui.friends.FriendsFragment
+import cz.petrkubes.split.ui.main.ui.payment.PaymentsFragment
 
 
 /**

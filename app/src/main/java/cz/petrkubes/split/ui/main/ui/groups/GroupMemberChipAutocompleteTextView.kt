@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.components
+package cz.petrkubes.split.ui.main.ui.groups
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,13 +8,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.tokenautocomplete.TokenCompleteTextView
 import cz.petrkubes.split.R
-import cz.petrkubes.split.ui.main.core.data.User
+import cz.petrkubes.split.ui.main.core.database.model.User
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 17/09/2017
  */
-class ChipAutocompleteTextView : TokenCompleteTextView<User>{
+class GroupMemberChipAutocompleteTextView : TokenCompleteTextView<User>{
 
     constructor(context: Context) : super(context)
 
@@ -25,7 +25,7 @@ class ChipAutocompleteTextView : TokenCompleteTextView<User>{
         val chipView : TextView = LayoutInflater.from(context).inflate(R.layout.chip, parent as ViewGroup, false) as TextView
 
         if (user != null) {
-            chipView.setText(user.name)
+            chipView.setText(user.email)
         } else {
             chipView.setText("null")
         }
@@ -36,7 +36,7 @@ class ChipAutocompleteTextView : TokenCompleteTextView<User>{
     override fun defaultObject(completionText: String?): User {
         // TODO database stuff
         if (completionText == null) {
-            return User("unknown user")
+            return User("unknown")
         } else {
             return User(completionText)
         }

@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.fragments.friends
+package cz.petrkubes.split.ui.main.ui.friends
 
 import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
@@ -10,11 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.FragmentRecyclerViewBinding
-import cz.petrkubes.split.ui.main.core.data.User
+import cz.petrkubes.split.ui.main.core.database.model.User
 import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
-import io.reactivex.android.schedulers.AndroidSchedulers
 
 
 /**
@@ -30,17 +29,13 @@ class FriendsFragment : LifecycleFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        friendsViewModel = ViewModelProviders.of(this, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
+        friendsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
 
-        friendsViewModel.observableFriends()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { observedFriends: List<User> ->
-                    users.clear()
-                    users.addAll(observedFriends)
-                    binding.recyclerView.adapter.notifyDataSetChanged()
-                }
-
-
+        friendsViewModel.getObservableFriends().subscribe {
+            users.clear()
+            users.addAll(it)
+            binding.recyclerView.adapter.notifyDataSetChanged()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {

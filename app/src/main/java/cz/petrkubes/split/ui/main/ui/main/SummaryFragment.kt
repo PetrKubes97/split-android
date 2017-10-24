@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.fragments.summary
+package cz.petrkubes.split.ui.main.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater

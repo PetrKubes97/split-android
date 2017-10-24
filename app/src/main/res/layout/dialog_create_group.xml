@@ -16,7 +16,7 @@
             android:layout_marginLeft="0dp"
             app:layout_constraintLeft_toLeftOf="@+id/etGroupName" />
 
-        <cz.petrkubes.split.ui.main.ui.components.ChipAutocompleteTextView
+        <cz.petrkubes.split.ui.main.ui.groups.GroupMemberChipAutocompleteTextView
             android:id="@+id/etChipAutocomplete"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

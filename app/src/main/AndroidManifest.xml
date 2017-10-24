@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme"
         android:name=".ui.main.ui.App">
         <activity
-            android:name=".ui.main.ui.activities.main.MainActivity"
+            android:name=".ui.main.ui.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -21,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.ui.activities.payment.PaymentActivity"
-            android:parentActivityName=".ui.main.ui.activities.main.MainActivity" />
+            android:name=".ui.main.ui.payment.PaymentActivity"
+            android:parentActivityName=".ui.main.ui.main.MainActivity" />
     </application>
 
 </manifest>

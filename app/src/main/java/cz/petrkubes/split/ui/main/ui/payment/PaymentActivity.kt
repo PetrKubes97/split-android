@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.activities.payment
+package cz.petrkubes.split.ui.main.ui.payment
 
 import android.arch.lifecycle.LifecycleActivity
 import android.arch.lifecycle.ViewModelProviders
@@ -6,7 +6,7 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityDebtBinding
-import cz.petrkubes.split.ui.main.core.data.Payment
+import cz.petrkubes.split.ui.main.core.database.model.Payment
 
 class PaymentActivity : LifecycleActivity() {
 

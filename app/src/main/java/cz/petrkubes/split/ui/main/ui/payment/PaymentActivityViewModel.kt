@@ -1,7 +1,7 @@
-package cz.petrkubes.split.ui.main.ui.activities.payment
+package cz.petrkubes.split.ui.main.ui.payment
 
 import android.arch.lifecycle.ViewModel
-import cz.petrkubes.split.ui.main.core.data.Payment
+import cz.petrkubes.split.ui.main.core.database.model.Payment
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
