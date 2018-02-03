@@ -19,10 +19,10 @@ class UserRepository @Inject constructor() {
 
     fun getAll(): Single<List<User>> = select.from(User::class.java).rx().list
 
-    fun insertRelation(user: User, group: Group): Single<Boolean> {
+    fun insertRelation(user: User, group: Group): Boolean {
         val userGroup = User_Group()
         userGroup.group = group
         userGroup.user = user
-        return group.save()
+        return userGroup.save()
     }
 }

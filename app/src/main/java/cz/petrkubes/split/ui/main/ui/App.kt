@@ -5,7 +5,6 @@ import com.facebook.stetho.Stetho
 import com.raizlabs.android.dbflow.config.FlowManager
 import cz.petrkubes.split.ui.main.di.DaggerMainComponent
 import cz.petrkubes.split.ui.main.di.MainComponent
-import cz.petrkubes.split.ui.main.di.modules.CoreModule
 
 
 
@@ -20,7 +19,7 @@ class App: Application() {
     override fun onCreate() {
         super.onCreate()
         // Dagger
-        component = DaggerMainComponent.builder().coreModule(CoreModule(this)).build()
+        component = DaggerMainComponent.builder().build()
 
         // DBFLow
         FlowManager.init(this)

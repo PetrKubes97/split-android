@@ -31,14 +31,21 @@ class GroupsViewModel : ViewModel(), MainComponent.injectable {
         return groupsSubject
     }
 
-    fun insertGroup(group: Group) {
+    fun insertGroup(group: Group): Observable<Boolean> {
+
+        val subject: PublishSubject<Boolean> = PublishSubject.create()
+
         groupRepository.insert(group)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy {
                     refreshGroups()
+                    subject.onNext(true)
                 }
+
+        return subject
     }
+
 
     // Refresh
     private fun refreshGroups() {

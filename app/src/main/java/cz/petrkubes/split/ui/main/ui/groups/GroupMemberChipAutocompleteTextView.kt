@@ -25,9 +25,9 @@ class GroupMemberChipAutocompleteTextView : TokenCompleteTextView<User>{
         val chipView : TextView = LayoutInflater.from(context).inflate(R.layout.chip, parent as ViewGroup, false) as TextView
 
         if (user != null) {
-            chipView.setText(user.email)
+            chipView.text = user.name
         } else {
-            chipView.setText("null")
+            chipView.text = "null"
         }
 
         return chipView

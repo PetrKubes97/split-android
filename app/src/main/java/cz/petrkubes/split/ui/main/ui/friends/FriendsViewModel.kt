@@ -47,8 +47,14 @@ class FriendsViewModel : ViewModel(), MainComponent.injectable {
                 .subscribe { savedUsers ->
                     val usersInDatabase: PublishSubject<User> = PublishSubject.create()
 
+                    usersInDatabase
+                            .subscribeOn(Schedulers.io())
+                            .subscribe({ user ->
+                                userRepository.insertRelation(user, group)
+                            })
+
                     users.forEach {
-                        if (!savedUsers.contains(it)) {
+                        if (savedUsers.contains(it)) {
                             usersInDatabase.onNext(it)
                         } else {
                             userRepository.insert(it).subscribeBy { succeeded ->
@@ -58,16 +64,6 @@ class FriendsViewModel : ViewModel(), MainComponent.injectable {
                             }
                         }
                     }
-
-                    usersInDatabase.onComplete()
-
-                    usersInDatabase
-                            .subscribeOn(Schedulers.io())
-                            .subscribeBy(
-                                    onNext = {userRepository.insertRelation(it, group)},
-                                    onError = {},
-                                    onComplete = { print("relationships inserted")}
-                            )
                 }
     }
 

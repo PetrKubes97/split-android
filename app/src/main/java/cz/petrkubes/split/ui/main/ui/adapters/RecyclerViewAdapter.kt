@@ -5,14 +5,13 @@ import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import cz.petrkubes.split.ui.main.core.database.model.User
 
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 05/08/2017
  */
-class RecyclerViewAdapter(var data: MutableList<User>, private val itemLayout: Int) : RecyclerView.Adapter<ViewHolder>() {
+class RecyclerViewAdapter(var data: List<Any>, private val itemLayout: Int) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
@@ -26,5 +25,5 @@ class RecyclerViewAdapter(var data: MutableList<User>, private val itemLayout: I
         }
     }
 
-    override fun getItemCount(): Int = data.size ?: 0
+    override fun getItemCount(): Int = data.size
 }

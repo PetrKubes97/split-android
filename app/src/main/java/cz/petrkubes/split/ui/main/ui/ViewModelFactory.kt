@@ -9,13 +9,11 @@ import cz.petrkubes.split.ui.main.di.MainComponent
  * @since 20/08/2017
  */
 class ViewModelFactory(val app: App) : ViewModelProvider.NewInstanceFactory() {
-
-    override fun <T : ViewModel?> create(modelClass: Class<T>?): T {
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         val t: T = super.create(modelClass)
         if (t is MainComponent.injectable) {
             (t as MainComponent.injectable).inject(app.component)
         }
         return t;
     }
-
 }

@@ -52,10 +52,14 @@ class CreateGroupDialog(activity: AppCompatActivity, activityBinding: ActivityMa
                     // Save the group
                     val group = Group()
                     group.name = binding.etGroupName.text.toString()
-                    groupsViewModel.insertGroup(group)
+                    groupsViewModel.insertGroup(group).subscribe {
+                        // Add user <-> table relation
+                        friendsViewModel.insertRelations(group, binding.etChipAutocomplete.objects)
 
-                    // Add user <-> table relation
-                    friendsViewModel.insertRelations(group, binding.etChipAutocomplete.objects)
+                    }
+
+                    binding.etChipAutocomplete.setText("")
+                    binding.etGroupName.setText("")
 
                     activityBinding.drawerLayout.closeDrawers()
                 })

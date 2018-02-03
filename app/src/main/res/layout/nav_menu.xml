@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:custom="http://schemas.android.com/apk/res-auto"
 
@@ -50,26 +49,12 @@
         </RelativeLayout>
 
 
-        <LinearLayout
-            android:id="@+id/groupsContainer"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/groupsRecView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <cz.petrkubes.split.ui.main.ui.main.NavMenuItem
-                android:id="@+id/group1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                custom:icon="@drawable/ic_group_black_24dp"
-                custom:text="Voda 2017" />
-
-            <cz.petrkubes.split.ui.main.ui.main.NavMenuItem
-                android:id="@+id/group2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                custom:icon="@drawable/ic_group_black_24dp"
-                custom:text="Tábor" />
-        </LinearLayout>
+        </android.support.v7.widget.RecyclerView>
 
         <View
             android:layout_width="match_parent"

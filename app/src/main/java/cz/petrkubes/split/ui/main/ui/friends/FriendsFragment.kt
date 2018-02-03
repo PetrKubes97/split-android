@@ -1,9 +1,9 @@
 package cz.petrkubes.split.ui.main.ui.friends
 
-import android.arch.lifecycle.LifecycleFragment
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
@@ -20,7 +20,7 @@ import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 05/08/2017
  */
-class FriendsFragment : LifecycleFragment() {
+class FriendsFragment : Fragment() {
 
     private lateinit var friendsViewModel: FriendsViewModel
     private lateinit var binding: FragmentRecyclerViewBinding

@@ -2,13 +2,20 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="cz.petrkubes.split.ui.main.core.database.model.Group" />
+    </data>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:focusable="true"
-        android:padding="@dimen/nav_item_padding">
+        android:padding="@dimen/nav_item_padding"
+        android:focusable="true">
 
         <ImageView
             android:id="@+id/icon"
@@ -28,8 +35,9 @@
             android:layout_marginStart="8dp"
             android:layout_toEndOf="@+id/icon"
             android:gravity="center"
-            android:text="asdf"
+            android:text="@{item.name}"
             android:textColor="@color/primary_text"
             tools:ignore="HardcodedText" />
+
     </RelativeLayout>
 </layout>
