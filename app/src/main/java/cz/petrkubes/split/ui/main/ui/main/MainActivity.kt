@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityMainBinding
 import cz.petrkubes.split.ui.main.core.database.model.Group
@@ -19,6 +20,7 @@ import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
 import cz.petrkubes.split.ui.main.ui.friends.AddFriendDialog
+import cz.petrkubes.split.ui.main.ui.friends.FriendsViewModel
 import cz.petrkubes.split.ui.main.ui.groups.CreateGroupDialog
 import cz.petrkubes.split.ui.main.ui.groups.GroupsViewModel
 import cz.petrkubes.split.ui.main.ui.payment.PaymentActivity
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         val groupsViewModel: GroupsViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(GroupsViewModel::class.java)
+        val friendsViewModel: FriendsViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(FriendsViewModel::class.java)
 
         // Set up action bar
         setSupportActionBar(binding.toolbar)
@@ -49,8 +52,12 @@ class MainActivity : AppCompatActivity() {
         val toggle = ActionBarDrawerToggle(this, binding.drawerLayout,binding.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         binding.drawerLayout.addDrawerListener(toggle)
 
+        // Groups list
         val groups: MutableList<Group> = mutableListOf()
-        val groupsAdapter = RecyclerViewAdapter(groups, R.layout.item_nav_menu)
+        val groupsAdapter = RecyclerViewAdapter(groups, R.layout.item_nav_menu, {
+            Toast.makeText(this, "Haha", Toast.LENGTH_SHORT).show()
+            friendsViewModel.currentGroupId = (it as Group).id
+        })
         binding.navMenu?.groupsRecView?.layoutManager = LinearLayoutManager(this)
         binding.navMenu?.groupsRecView?.adapter = groupsAdapter
 
@@ -58,6 +65,12 @@ class MainActivity : AppCompatActivity() {
             groups.clear()
             groups.addAll(it)
             groupsAdapter.notifyDataSetChanged()
+        }
+
+        // See all debts
+        binding.navMenu?.allDebts?.setOnClickListener {
+            Toast.makeText(this, "Haha", Toast.LENGTH_SHORT).show()
+            friendsViewModel.currentGroupId = 0
         }
 
         toggle.syncState()

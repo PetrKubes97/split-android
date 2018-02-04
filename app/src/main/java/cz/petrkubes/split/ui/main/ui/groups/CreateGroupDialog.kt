@@ -40,7 +40,7 @@ class CreateGroupDialog(activity: AppCompatActivity, activityBinding: ActivityMa
         binding.etChipAutocomplete.setAdapter(adapter)
 
         // Load friends
-        friendsViewModel.getObservableFriends().subscribe {
+        friendsViewModel.getAllFriends().subscribe {
             people.clear()
             people.addAll(it)
             adapter.notifyDataSetChanged()

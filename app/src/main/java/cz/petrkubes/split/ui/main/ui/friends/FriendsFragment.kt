@@ -31,7 +31,7 @@ class FriendsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         friendsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
 
-        friendsViewModel.getObservableFriends().subscribe {
+        friendsViewModel.getFriendsInGroup().subscribe {
             users.clear()
             users.addAll(it)
             binding.recyclerView.adapter.notifyDataSetChanged()
@@ -43,7 +43,7 @@ class FriendsFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
 
         // Add data to listview
-        val adapter = RecyclerViewAdapter(users, R.layout.item_friend)
+        val adapter = RecyclerViewAdapter(users, R.layout.item_friend, {})
         binding.recyclerView.layoutManager = LinearLayoutManager(activity)
         binding.recyclerView.adapter = adapter
 

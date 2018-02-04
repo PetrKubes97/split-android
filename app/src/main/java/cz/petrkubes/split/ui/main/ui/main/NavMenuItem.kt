@@ -16,6 +16,8 @@ import cz.petrkubes.split.databinding.NavMenuItemBinding
 
 class NavMenuItem constructor(context: Context, attrs: AttributeSet) : RelativeLayout(context, attrs) {
 
+    private val binding: NavMenuItemBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.nav_menu_item, this, true)
+
     init {
         // Obtain attributes
         val a = context.obtainStyledAttributes(attrs, R.styleable.NavMenuItem, 0, 0)
@@ -23,12 +25,14 @@ class NavMenuItem constructor(context: Context, attrs: AttributeSet) : RelativeL
         val icon = a.getDrawable(R.styleable.NavMenuItem_icon)
         a.recycle()
 
-        // Inflate layout
-        val binding: NavMenuItemBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.nav_menu_item, this, true)
-
         binding.textView.text = text
         binding.icon.setImageDrawable(icon)
+
+
     }
 
+    override fun setOnClickListener(l: OnClickListener?) {
+        binding.root.setOnClickListener(l)
+    }
 }
 

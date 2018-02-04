@@ -15,7 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             custom:icon="@drawable/ic_list_black_24dp"
-            custom:text="All Your Debts" />
+            custom:text="All Your Debts"
+            android:clickable="true"
+            android:focusable="true"/>
 
         <View
             android:layout_width="match_parent"
