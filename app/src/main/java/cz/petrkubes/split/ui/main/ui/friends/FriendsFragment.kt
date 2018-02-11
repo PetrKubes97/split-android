@@ -14,6 +14,8 @@ import cz.petrkubes.split.ui.main.core.database.model.User
 import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
+import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
+import cz.petrkubes.split.ui.main.ui.viewModels.GroupsViewModel
 
 
 /**
@@ -22,6 +24,7 @@ import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
  */
 class FriendsFragment : Fragment() {
 
+    private lateinit var groupsViewModel: GroupsViewModel
     private lateinit var friendsViewModel: FriendsViewModel
     private lateinit var binding: FragmentRecyclerViewBinding
 
@@ -30,8 +33,10 @@ class FriendsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         friendsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
+        groupsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(GroupsViewModel::class.java)
 
-        friendsViewModel.getFriendsInGroup().subscribe {
+
+        friendsViewModel.getFriendsInGroup(groupsViewModel.currentGroupId).subscribe {
             users.clear()
             users.addAll(it)
             binding.recyclerView.adapter.notifyDataSetChanged()

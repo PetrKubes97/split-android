@@ -10,6 +10,7 @@ import cz.petrkubes.split.databinding.DialogAddFriendBinding
 import cz.petrkubes.split.ui.main.core.database.model.User
 import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
+import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>

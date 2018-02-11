@@ -1,7 +1,6 @@
-package cz.petrkubes.split.ui.main.ui.friends
+package cz.petrkubes.split.ui.main.ui.viewModels
 
 import android.arch.lifecycle.ViewModel
-import android.util.Log
 import cz.petrkubes.split.ui.main.core.database.model.Group
 import cz.petrkubes.split.ui.main.core.database.model.User
 import cz.petrkubes.split.ui.main.di.MainComponent
@@ -26,18 +25,12 @@ class FriendsViewModel : ViewModel(), MainComponent.injectable {
     private var groupFriendsSubject: PublishSubject<List<User>> = PublishSubject.create()
     private var allFriendsSubject: PublishSubject<List<User>> = PublishSubject.create()
 
-    var currentGroupId:Int = 0
-        set(value) {
-            field = value
-            refreshFriends(false, value)
-        }
-
     override fun inject(mainComponent: MainComponent) {
         mainComponent.inject(this)
     }
 
-    fun getFriendsInGroup(): Observable<List<User>> {
-        refreshFriends(groupId = currentGroupId)
+    fun getFriendsInGroup(groupId: Int): Observable<List<User>> {
+        refreshFriends(groupId = groupId)
         return groupFriendsSubject
     }
 
@@ -81,10 +74,7 @@ class FriendsViewModel : ViewModel(), MainComponent.injectable {
                 }
     }
 
-    private fun refreshFriends(all: Boolean = false, groupId: Int = 0) {
-
-        Log.d("asdf", "refreshing")
-
+    fun refreshFriends(all: Boolean = false, groupId: Int = 0) {
         val friendsSingle: Single<List<User>>
 
         if (all || groupId == 0)

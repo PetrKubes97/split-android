@@ -11,29 +11,23 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityMainBinding
 import cz.petrkubes.split.ui.main.core.database.model.Group
-import cz.petrkubes.split.ui.main.repositories.UserRepository
 import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
 import cz.petrkubes.split.ui.main.ui.friends.AddFriendDialog
-import cz.petrkubes.split.ui.main.ui.friends.FriendsViewModel
 import cz.petrkubes.split.ui.main.ui.groups.CreateGroupDialog
-import cz.petrkubes.split.ui.main.ui.groups.GroupsViewModel
 import cz.petrkubes.split.ui.main.ui.payment.PaymentActivity
+import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
+import cz.petrkubes.split.ui.main.ui.viewModels.GroupsViewModel
 import cz.petrkubes.split.ui.main.util.debtRequestcode
-import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     var lifecycleRegistry = LifecycleRegistry(this)
     lateinit var fragmentsAdapter: FragmentsAdapter
-
-    @Inject
-    lateinit var userRepository: UserRepository
 
     lateinit var binding: ActivityMainBinding
 
@@ -55,9 +49,10 @@ class MainActivity : AppCompatActivity() {
         // Groups list
         val groups: MutableList<Group> = mutableListOf()
         val groupsAdapter = RecyclerViewAdapter(groups, R.layout.item_nav_menu, {
-            Toast.makeText(this, "Haha", Toast.LENGTH_SHORT).show()
-            friendsViewModel.currentGroupId = (it as Group).id
+            groupsViewModel.currentGroupId = (it as Group).id
+            friendsViewModel.refreshFriends(groupId = groupsViewModel.currentGroupId)
         })
+
         binding.navMenu?.groupsRecView?.layoutManager = LinearLayoutManager(this)
         binding.navMenu?.groupsRecView?.adapter = groupsAdapter
 
@@ -69,8 +64,8 @@ class MainActivity : AppCompatActivity() {
 
         // See all debts
         binding.navMenu?.allDebts?.setOnClickListener {
-            Toast.makeText(this, "Haha", Toast.LENGTH_SHORT).show()
-            friendsViewModel.currentGroupId = 0
+            groupsViewModel.currentGroupId = 0
+            friendsViewModel.refreshFriends(true)
         }
 
         toggle.syncState()

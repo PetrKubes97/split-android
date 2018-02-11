@@ -1,4 +1,4 @@
-package cz.petrkubes.split.ui.main.ui.groups
+package cz.petrkubes.split.ui.main.ui.viewModels
 
 import android.arch.lifecycle.ViewModel
 import cz.petrkubes.split.ui.main.core.database.model.Group
@@ -15,9 +15,14 @@ import javax.inject.Inject
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 28/09/2017
  */
-class GroupsViewModel : ViewModel(), MainComponent.injectable { 
+class GroupsViewModel : ViewModel(), MainComponent.injectable {
 
     private val groupsSubject: PublishSubject<List<Group>> = PublishSubject.create()
+    var currentGroupId: Int = 0
+        set(value) {
+            field = value
+            refreshGroups()
+        }
 
     override fun inject(mainComponent: MainComponent) {
         mainComponent.inject(this)
@@ -53,6 +58,11 @@ class GroupsViewModel : ViewModel(), MainComponent.injectable {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy {
+                    // Mark selected
+                    it.forEach {
+                        if (it.id == currentGroupId) it.isSelected = true
+                    }
+
                     groupsSubject.onNext(it)
                 }
     }

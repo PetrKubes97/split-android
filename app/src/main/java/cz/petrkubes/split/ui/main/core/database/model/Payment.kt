@@ -1,21 +1,43 @@
 package cz.petrkubes.split.ui.main.core.database.model
 
-import org.joda.time.DateTime
+import com.raizlabs.android.dbflow.annotation.Column
+import com.raizlabs.android.dbflow.annotation.ForeignKey
+import com.raizlabs.android.dbflow.annotation.PrimaryKey
+import com.raizlabs.android.dbflow.annotation.Table
+import com.raizlabs.android.dbflow.rx2.structure.BaseRXModel
+import cz.petrkubes.split.ui.main.core.database.AppDatabase
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 13/08/2017
  */
+@Table(database = AppDatabase::class)
+class Payment : BaseRXModel() {
 
-class Payment(var paidBy: Int, var groupId: Int?) {
-
+    @PrimaryKey(autoincrement = true)
     var id: Int = 0
-    var synced: Boolean = false
+
+    @ForeignKey
+    var paidBy: User? = null
+
+    @ForeignKey
+    var paidFor: User? = null
+
+    @ForeignKey
+    var group: Group? = null
+
+    @Column
     var thingName: String? = null
+
+    @Column
     var amount: Int? = null
+
+    @Column
     var note: String? = null
 
+    @Column
+    var date: Long = System.currentTimeMillis() / 1000
 
-    var date: DateTime = DateTime.now()
+    @Column
     var parentDebtId: Int? = null
 }

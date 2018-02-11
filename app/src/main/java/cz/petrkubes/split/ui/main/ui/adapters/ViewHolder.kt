@@ -9,9 +9,10 @@ import com.android.databinding.library.baseAdapters.BR
  * @since 05/08/2017
  */
 // The View Holder
-class ViewHolder(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
-    fun  bind(obj: Any, listener: (item: Any) -> Unit) {
+class ViewHolder(var binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun  bind(obj: Any, listener: ((item: Any) -> Unit)? = null) {
         binding.setVariable(BR.item, obj)
-        binding.root.setOnClickListener { listener(obj) }
+        if (listener != null)
+            binding.root.setOnClickListener { listener(obj) }
     }
 }

@@ -12,7 +12,8 @@ import cz.petrkubes.split.ui.main.core.database.model.Group
 import cz.petrkubes.split.ui.main.core.database.model.User
 import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
-import cz.petrkubes.split.ui.main.ui.friends.FriendsViewModel
+import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
+import cz.petrkubes.split.ui.main.ui.viewModels.GroupsViewModel
 import java.util.*
 
 

@@ -56,10 +56,11 @@
                         android:layout_height="wrap_content"
                         android:text="Who paid:"
                         android:layout_marginEnd="8dp"
-                        android:textColor="@android:color/white" />
+                        android:textColor="@android:color/white"
+                        android:labelFor="@id/actvWho"/>
 
                     <AutoCompleteTextView
-                        android:id="@+id/textWho"
+                        android:id="@+id/actvWho"
                         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
                         android:layout_width="match_parent"
                         android:backgroundTint="@android:color/white"
@@ -70,20 +71,43 @@
 
                 <TableRow android:gravity="center">
 
-                    <TextView
-                        android:id="@+id/labelWhom"
+                    <RadioGroup
+                        android:id="@+id/forWhomRdioGrp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="For whom:"
-                        android:layout_marginEnd="8dp"
-                        android:textColor="@android:color/white" />
+                        android:layout_marginEnd="8dp">
 
-                    <MultiAutoCompleteTextView
-                        android:id="@+id/textWhom"
+                        <RadioButton
+                            android:id="@+id/rdioGroup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:buttonTint="@android:color/white"
+                            android:text="Group"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+
+                        <RadioButton
+                            android:id="@+id/rdioFriend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:buttonTint="@android:color/white"
+                            android:text="Friend"
+                            android:textColor="@android:color/white"
+                            android:textSize="12sp" />
+                    </RadioGroup>
+
+                    <AutoCompleteTextView
+                        android:id="@+id/actvForWhom"
                         android:layout_width="match_parent"
                         android:backgroundTint="@android:color/white"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
+
+                    <Spinner
+                        android:id="@+id/spnForGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
                 </TableRow>
 
 

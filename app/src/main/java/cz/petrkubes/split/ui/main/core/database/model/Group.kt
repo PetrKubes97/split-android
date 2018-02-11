@@ -22,4 +22,7 @@ class Group : BaseRXModel() {
 
     @Column
     var isSynced: Boolean = false
+
+    // UI params
+    var isSelected: Boolean = false
 }

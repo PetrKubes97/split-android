@@ -12,7 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
+        android:background="@{item.selected ? @color/light_grey : @color/white}"
         android:clickable="true"
         android:padding="@dimen/nav_item_padding"
         android:focusable="true">
