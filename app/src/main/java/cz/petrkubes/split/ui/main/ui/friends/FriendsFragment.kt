@@ -35,7 +35,6 @@ class FriendsFragment : Fragment() {
         friendsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
         groupsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(GroupsViewModel::class.java)
 
-
         friendsViewModel.getFriendsInGroup(groupsViewModel.currentGroupId).subscribe {
             users.clear()
             users.addAll(it)

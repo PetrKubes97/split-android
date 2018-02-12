@@ -3,6 +3,7 @@ package cz.petrkubes.split.ui.main.ui.adapters
 import android.content.Context
 import android.databinding.DataBindingUtil
 import android.databinding.ViewDataBinding
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ import android.widget.Filterable
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 11/02/2018
  */
-class ListAdapter<T: Any>(context: Context, private val originalList: List<T>, val layout: Int, val filterRule:((T, constraint: CharSequence) -> Boolean)? = null) : ArrayAdapter<Any>(context, layout), Filterable {
+class ListAdapter<T: Any>(context: Context, private val originalList: List<T>, val layout: Int, val filterRule:((T, constraint: CharSequence) -> Boolean)? = null) : ArrayAdapter<Any>(context, android.R.layout.simple_dropdown_item_1line), Filterable {
 
     val tempList: MutableList<T> = if (filterRule == null) originalList as MutableList<T> else mutableListOf()
     private val customFilter: CustomFilter = CustomFilter()
@@ -28,15 +29,19 @@ class ListAdapter<T: Any>(context: Context, private val originalList: List<T>, v
             val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, layout, parent, false)
             retView = binding.root
             viewHolder = ViewHolder(binding)
-            viewHolder.bind(originalList[position])
+            viewHolder.bind(tempList[position])
             retView.tag = viewHolder
         } else {
             viewHolder = convertView.tag as ViewHolder
-            viewHolder.bind(originalList[position])
+            viewHolder.bind(tempList[position])
             retView = viewHolder.binding.root
         }
 
         return retView
+    }
+
+    override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup?): View {
+        return getView(position, convertView, parent)
     }
 
     override fun getCount(): Int {
@@ -57,6 +62,7 @@ class ListAdapter<T: Any>(context: Context, private val originalList: List<T>, v
             if (filterRule != null) {
                 tempList.clear()
                 if (constraint != null) {
+                    Log.d("asdf", constraint as String)
                     tempList.addAll(originalList)
                     tempList.retainAll {
                         filterRule.invoke(it, constraint)

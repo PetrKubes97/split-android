@@ -72,7 +72,7 @@
                 <TableRow android:gravity="center">
 
                     <RadioGroup
-                        android:id="@+id/forWhomRdioGrp"
+                        android:id="@+id/rdioGrpForWhom"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp">
@@ -114,13 +114,13 @@
                 <TableRow android:gravity="center">
 
                     <RadioGroup
-                        android:id="@+id/radioGroup"
+                        android:id="@+id/rdioGrpWhat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp">
 
                         <RadioButton
-                            android:id="@+id/radiobutton"
+                            android:id="@+id/rdioBtnMoney"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:buttonTint="@android:color/white"
@@ -129,7 +129,7 @@
                             android:textSize="12sp" />
 
                         <RadioButton
-                            android:id="@+id/radioButton2"
+                            android:id="@+id/rdioBtnThing"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -140,7 +140,7 @@
                     </RadioGroup>
 
                     <EditText
-                        android:id="@+id/textSubject"
+                        android:id="@+id/etWhat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@android:color/white"
@@ -169,7 +169,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tableLayout" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/floatingActionButton"
+                android:id="@+id/fabButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -188,14 +188,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="8dp"
                 android:text="Note:"
-                app:layout_constraintBottom_toBottomOf="@+id/textNote"
-                app:layout_constraintRight_toLeftOf="@+id/textNote"
-                app:layout_constraintTop_toTopOf="@+id/textNote"
+                app:layout_constraintBottom_toBottomOf="@+id/etNote"
+                app:layout_constraintRight_toLeftOf="@+id/etNote"
+                app:layout_constraintTop_toTopOf="@+id/etNote"
                 app:layout_constraintVertical_bias="0.523"
                 android:layout_marginEnd="8dp" />
 
             <EditText
-                android:id="@+id/textNote"
+                android:id="@+id/etNote"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
@@ -203,7 +203,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="14sp"
-                app:layout_constraintRight_toLeftOf="@+id/floatingActionButton"
+                app:layout_constraintRight_toLeftOf="@+id/fabButton"
                 app:layout_constraintTop_toTopOf="@+id/viewBackground" />
         </android.support.constraint.ConstraintLayout>
     </LinearLayout>

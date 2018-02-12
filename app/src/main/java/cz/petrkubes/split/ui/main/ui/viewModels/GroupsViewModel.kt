@@ -31,7 +31,7 @@ class GroupsViewModel : ViewModel(), MainComponent.injectable {
     @Inject
     lateinit var groupRepository: GroupRepository
 
-    fun getObservableGroups(): Observable<List<Group>> {
+    fun getAllGroups(): Observable<List<Group>> {
         refreshGroups()
         return groupsSubject
     }

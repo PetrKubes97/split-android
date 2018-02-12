@@ -56,7 +56,6 @@ class CreateGroupDialog(activity: AppCompatActivity, activityBinding: ActivityMa
                     groupsViewModel.insertGroup(group).subscribe {
                         // Add user <-> table relation
                         friendsViewModel.insertRelations(group, binding.etChipAutocomplete.objects)
-
                     }
 
                     binding.etChipAutocomplete.setText("")

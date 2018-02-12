@@ -11,11 +11,9 @@ import android.view.ViewGroup
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 05/08/2017
  */
-class RecyclerViewAdapter(var originalList: List<Any>,
+class RecyclerViewAdapter(var list: List<Any>,
                           private val itemLayout: Int,
                           val listener: (item: Any) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
-
-    var tempList: MutableList<Any> = originalList.toMutableList()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
@@ -24,8 +22,8 @@ class RecyclerViewAdapter(var originalList: List<Any>,
     }
 
     override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.bind(tempList[position], listener)
+        holder?.bind(list[position], listener)
     }
 
-    override fun getItemCount(): Int = tempList.size
+    override fun getItemCount(): Int = list.size
 }

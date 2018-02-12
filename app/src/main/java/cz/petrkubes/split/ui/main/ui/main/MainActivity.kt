@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
         binding.navMenu?.groupsRecView?.layoutManager = LinearLayoutManager(this)
         binding.navMenu?.groupsRecView?.adapter = groupsAdapter
 
-        groupsViewModel.getObservableGroups().subscribe {
+        groupsViewModel.getAllGroups().subscribe {
             groups.clear()
             groups.addAll(it)
             groupsAdapter.notifyDataSetChanged()
