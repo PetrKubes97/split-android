@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.main.ui.payment.PaymentActivity"
+            android:name=".ui.main.ui.debt.DebtActivity"
             android:parentActivityName=".ui.main.ui.main.MainActivity" />
     </application>
 

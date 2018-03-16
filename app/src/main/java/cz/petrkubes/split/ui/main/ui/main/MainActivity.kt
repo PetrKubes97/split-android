@@ -19,7 +19,7 @@ import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewAdapter
 import cz.petrkubes.split.ui.main.ui.friends.AddFriendDialog
 import cz.petrkubes.split.ui.main.ui.groups.CreateGroupDialog
-import cz.petrkubes.split.ui.main.ui.payment.PaymentActivity
+import cz.petrkubes.split.ui.main.ui.debt.DebtActivity
 import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
 import cz.petrkubes.split.ui.main.ui.viewModels.GroupsViewModel
 import cz.petrkubes.split.ui.main.util.debtRequestcode
@@ -85,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
         // FAB
         binding.fab.setOnClickListener { _ ->
-            val intent = Intent(this, PaymentActivity::class.java)
+            val intent = Intent(this, DebtActivity::class.java)
             startActivityForResult(intent, debtRequestcode)
         }
     }

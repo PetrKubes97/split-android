@@ -5,7 +5,7 @@ import cz.petrkubes.split.ui.main.di.modules.RepositoriesModule
 import cz.petrkubes.split.ui.main.ui.main.MainActivity
 import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
 import cz.petrkubes.split.ui.main.ui.viewModels.GroupsViewModel
-import cz.petrkubes.split.ui.main.ui.viewModels.PaymentsViewModel
+import cz.petrkubes.split.ui.main.ui.viewModels.DebtsViewModel
 import dagger.Component
 import javax.inject.Singleton
 
@@ -23,7 +23,7 @@ interface MainComponent {
 
     fun inject(viewModel: GroupsViewModel)
 
-    fun inject(viewModel: PaymentsViewModel)
+    fun inject(viewModel: DebtsViewModel)
 
     interface injectable {
         fun inject(mainComponent: MainComponent)

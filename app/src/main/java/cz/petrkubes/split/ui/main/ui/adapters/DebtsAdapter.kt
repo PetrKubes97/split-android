@@ -14,7 +14,7 @@ import cz.petrkubes.split.databinding.ItemPaymentBinding
  * @author Petr Kubes <petr.kubes@applifting.cz>
  * @since 25/07/2017
  */
-class PaymentsAdapter(context: Context, data: List<Any>) : ArrayAdapter<Any>(context, 0, data) {
+class DebtsAdapter(context: Context, data: List<Any>) : ArrayAdapter<Any>(context, 0, data) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
         val binding: ItemPaymentBinding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.item_payment, parent, false)

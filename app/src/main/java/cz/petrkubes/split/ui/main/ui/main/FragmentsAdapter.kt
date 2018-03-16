@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import cz.petrkubes.split.R
 import cz.petrkubes.split.ui.main.ui.friends.FriendsFragment
-import cz.petrkubes.split.ui.main.ui.payment.PaymentsFragment
+import cz.petrkubes.split.ui.main.ui.debt.DebtsFragment
 
 
 /**
@@ -16,7 +16,7 @@ class FragmentsAdapter(fm: FragmentManager, var context: Context) : FragmentPage
 
     override fun getItem(i: Int): Fragment {
         when (i) {
-            0 -> return PaymentsFragment()
+            0 -> return DebtsFragment()
             1 -> return FriendsFragment()
             else -> return SummaryFragment()
         }

@@ -12,7 +12,7 @@ import cz.petrkubes.split.ui.main.core.database.AppDatabase
  * @since 13/08/2017
  */
 @Table(database = AppDatabase::class)
-class Payment : BaseRXModel() {
+class Debt : BaseRXModel() {
 
     @PrimaryKey(autoincrement = true)
     var id: Int = 0
@@ -31,6 +31,9 @@ class Payment : BaseRXModel() {
 
     @Column
     var amount: Int? = null
+
+    @ForeignKey
+    var currency: Currency? = null
 
     @Column
     var note: String? = null

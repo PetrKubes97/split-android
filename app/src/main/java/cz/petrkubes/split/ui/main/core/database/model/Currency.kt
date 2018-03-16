@@ -9,23 +9,24 @@ import cz.petrkubes.split.ui.main.ui.adapters.Item
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
- * @since 13/08/2017
+ * @since 13/02/2018
  */
-
 @Table(database = AppDatabase::class)
-class Group : BaseRXModel(), Item {
+class Currency() : BaseRXModel(), Item {
+
+    constructor(name: String, USDRate: Int) : this() {
+        this.name = name
+        this.USDRate = USDRate
+    }
+
+    @Column
+    var name: String = "Unknown"
+
+    @Column
+    var USDRate: Int = 9999
 
     @PrimaryKey(autoincrement = true)
     var id: Int = 0
-
-    @Column
-    var name: String = "unknown"
-
-    @Column
-    var isSynced: Boolean = false
-
-    // UI params
-    var isSelected: Boolean = false
 
     override fun getItemName(): String {
         return name

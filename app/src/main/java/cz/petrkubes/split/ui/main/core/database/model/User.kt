@@ -6,6 +6,7 @@ import com.raizlabs.android.dbflow.annotation.PrimaryKey
 import com.raizlabs.android.dbflow.annotation.Table
 import com.raizlabs.android.dbflow.rx2.structure.BaseRXModel
 import cz.petrkubes.split.ui.main.core.database.AppDatabase
+import cz.petrkubes.split.ui.main.ui.adapters.Item
 
 /**
  * @author Petr Kubes <petr.kubes@applifting.cz>
@@ -13,7 +14,7 @@ import cz.petrkubes.split.ui.main.core.database.AppDatabase
  */
 @ManyToMany(referencedTable = Group::class)
 @Table(database = AppDatabase::class)
-class User : BaseRXModel {
+class User : BaseRXModel, Item {
 
     constructor() : super() {
         this.name = "unknown"
@@ -39,4 +40,8 @@ class User : BaseRXModel {
     var email: String? = null
 
     override fun toString(): String = name
+
+    override fun getItemName(): String {
+        return name
+    }
 }
