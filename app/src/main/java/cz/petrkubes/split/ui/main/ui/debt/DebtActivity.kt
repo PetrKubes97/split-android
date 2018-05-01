@@ -5,7 +5,9 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.InputType
+import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import cz.petrkubes.split.R
 import cz.petrkubes.split.databinding.ActivityDebtBinding
 import cz.petrkubes.split.ui.main.core.database.model.Currency
@@ -15,18 +17,20 @@ import cz.petrkubes.split.ui.main.core.database.model.User
 import cz.petrkubes.split.ui.main.ui.App
 import cz.petrkubes.split.ui.main.ui.ViewModelFactory
 import cz.petrkubes.split.ui.main.ui.adapters.ListAdapter
+import cz.petrkubes.split.ui.main.ui.adapters.RecyclerViewCheckboxAdapter
 import cz.petrkubes.split.ui.main.ui.viewModels.DebtsViewModel
 import cz.petrkubes.split.ui.main.ui.viewModels.FriendsViewModel
 import cz.petrkubes.split.ui.main.ui.viewModels.GroupsViewModel
+import io.reactivex.disposables.Disposable
 
 
 class DebtActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityDebtBinding
 
+    var inGroup: Boolean = false;
     var paidBy: User? = null
     var paidForUser: User? = null
-    var paidForGroup: Group? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,20 +43,18 @@ class DebtActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // Set up view model
+        var friendsSubscription: Disposable? = null
+
         val groupsViewModel: GroupsViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(GroupsViewModel::class.java)
         val friendsViewModel: FriendsViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(FriendsViewModel::class.java)
         val debtsViewModel: DebtsViewModel = ViewModelProviders.of(this, ViewModelFactory(application as App)).get(DebtsViewModel::class.java)
 
         val friends: MutableList<User> = mutableListOf()
-        val adapterFriends = ListAdapter(this, friends, R.layout.item_simple, { user, constraint -> user.name.contains(constraint) })
-        val groups: MutableList<Group> = mutableListOf()
-        val adapterGroups = ListAdapter(this, groups, R.layout.item_simple, { group, constraint -> group.name.contains(constraint) })
+        val adapterFriends = ListAdapter(this, friends, R.layout.item_simple)
 
-        friendsViewModel.getAllFriends().subscribe {
-            friends.clear()
-            friends.addAll(it)
-            adapterFriends.notifyDataSetChanged()
-        }
+        val groups: MutableList<Group> = mutableListOf()
+        val adapterGroups = ListAdapter(this, groups, R.layout.item_simple)
+        val adapterFilterableFriends = ListAdapter(this, friends, R.layout.item_simple, { user, constraint -> user.name.contains(constraint) })
 
         groupsViewModel.getAllGroups().subscribe {
             groups.clear()
@@ -60,34 +62,74 @@ class DebtActivity : AppCompatActivity() {
             adapterGroups.notifyDataSetChanged()
         }
 
+        val adapterCheckboxFriendsInGroup = RecyclerViewCheckboxAdapter(friends)
 
-        binding.actvWho.setAdapter(adapterFriends)
-        binding.actvWho.threshold = 0
-        binding.actvWho.setOnItemClickListener { _, _, position, _ ->
-            paidBy = adapterFriends.getItem(position)
-        }
+        fun toggleGroup(group: Group?) {
+            if (group != null) {
+                binding.spnGroup.visibility =  View.VISIBLE
+                binding.etChipForWhom.visibility = View.INVISIBLE
+                binding.rcvGroupMembers.visibility = View.VISIBLE
 
-        // Set up debtor
-        binding.rdioFriend.isChecked = groupsViewModel.currentGroupId == 0
-        // Show group spinner or a friend
-        fun setUpWhom() {
-            if (binding.rdioFriend.isChecked) {
-                binding.actvForWhom.setAdapter(adapterFriends)
+                friendsSubscription?.dispose()
+                friendsSubscription = friendsViewModel.getFriendsInGroup(group.id).subscribe {
+                    friends.clear()
+                    friends.addAll(it)
+                    adapterCheckboxFriendsInGroup.notifyDataSetChanged()
+                }
+
             } else {
-                binding.actvForWhom.setAdapter(adapterGroups)
+                binding.spnGroup.visibility =  View.INVISIBLE
+                binding.etChipForWhom.visibility = View.VISIBLE
+                binding.rcvGroupMembers.visibility = View.GONE
+
+                friendsSubscription?.dispose()
+                friendsSubscription = friendsViewModel.getAllFriends().subscribe {
+                    friends.clear()
+                    friends.addAll(it)
+                    adapterFriends.notifyDataSetChanged()
+                }
             }
         }
 
-        binding.rdioGrpForWhom.setOnCheckedChangeListener { _, _ ->
-            setUpWhom()
-        }
-        setUpWhom()
+        toggleGroup(null)
 
-        // Set up for whom auto complete text view
-        binding.actvForWhom.threshold = 0
-        binding.actvForWhom.setOnItemClickListener { _, _, position, _ ->
-            // TODO
-            binding.actvForWhom.adapter.getItem(position)
+        // Set up group
+        binding.spnGroup.adapter = adapterGroups
+        binding.chckbGroup.setOnCheckedChangeListener{_, isChecked ->
+            if (isChecked) {
+                toggleGroup(binding.spnGroup.adapter.getItem(0) as Group)
+            } else {
+                toggleGroup(null)
+            }
+        }
+
+        binding.spnGroup.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val currentGroup = adapterGroups.getItem(position)
+                friendsViewModel.getFriendsInGroup(currentGroup.id).subscribe {
+                    friends.clear()
+                    friends.addAll(it)
+                    adapterCheckboxFriendsInGroup.notifyDataSetChanged()
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+
+        binding.rcvGroupMembers.adapter = adapterCheckboxFriendsInGroup
+
+        // Set up chips for non group debts
+        binding.etChipForWhom.setAdapter(adapterFilterableFriends)
+
+        binding.spnWho.adapter = adapterFriends
+        binding.spnWho.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                paidBy = adapterFriends.getItem(position)
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
         }
 
         // Set up what
@@ -111,8 +153,8 @@ class DebtActivity : AppCompatActivity() {
         binding.fabButton.setOnClickListener {
             val debt = Debt()
 
-            debt.paidBy = if (paidBy == null) User(binding.actvWho.text.toString()) else paidBy
-            debt.paidFor = if (paidForUser == null) User(binding.actvForWhom.text.toString()) else paidForUser
+            debt.paidBy = paidBy
+            debt.paidFor = paidForUser
 
             debt.thingName = if (binding.rdioThing.isChecked && !binding.etWhat.text.toString().isEmpty()) {
                 binding.etWhat.text.toString()

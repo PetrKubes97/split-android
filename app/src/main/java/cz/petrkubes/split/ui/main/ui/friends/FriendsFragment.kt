@@ -32,8 +32,12 @@ class FriendsFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        friendsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
-        groupsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(GroupsViewModel::class.java)
+        val activity = activity;
+
+        if (activity != null) {
+            friendsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(FriendsViewModel::class.java)
+            groupsViewModel = ViewModelProviders.of(activity, ViewModelFactory(activity.application as App)).get(GroupsViewModel::class.java)
+        }
 
         friendsViewModel.getFriendsInGroup(groupsViewModel.currentGroupId).subscribe {
             users.clear()
@@ -42,7 +46,7 @@ class FriendsFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
 

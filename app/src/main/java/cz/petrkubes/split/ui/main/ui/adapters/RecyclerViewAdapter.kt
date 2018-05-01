@@ -15,14 +15,14 @@ class RecyclerViewAdapter(var list: List<Any>,
                           private val itemLayout: Int,
                           val listener: (item: Any) -> Unit) : RecyclerView.Adapter<ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent?.context)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
         val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, itemLayout, parent, false)
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.bind(list[position], listener)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(list[position], listener)
     }
 
     override fun getItemCount(): Int = list.size

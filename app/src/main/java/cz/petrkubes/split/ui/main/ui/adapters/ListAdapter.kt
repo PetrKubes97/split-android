@@ -34,14 +34,14 @@ class ListAdapter<T: Item>(context: Context, private val originalList: List<T>, 
         val viewHolder: ViewHolder
         val retView: View
 
-        if (convertView == null || isDropdown) {
+        if (convertView == null) {
             val layoutInflater = LayoutInflater.from(parent?.context)
             val binding: ViewDataBinding = DataBindingUtil.inflate(layoutInflater, layout, parent, false)
             retView = binding.root
             viewHolder = ViewHolder(binding)
             viewHolder.bind(tempList[position])
 
-            if (isDropdown) {
+            if (!isDropdown) {
                 // FIXME this sucks, no idea how to make it nicer
                 val textView = binding.root.findViewById<TextView>(R.id.textName)
                 textView.setTextColor(ContextCompat.getColor(context, R.color.white))

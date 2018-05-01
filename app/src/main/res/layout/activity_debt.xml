@@ -9,25 +9,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:elevation="0dp"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="25dp"
-            android:theme="@style/AppTheme.AppBarOverlay">
-
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="0dp"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-        </android.support.design.widget.AppBarLayout>
+            android:background="@color/colorPrimary"/>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,17 +22,40 @@
             tools:context="cz.petrkubes.split.ui.main.ui.debt.DebtActivity">
 
 
+            <CheckBox
+                android:id="@+id/chckbGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:buttonTint="@android:color/white"
+                android:text="Group:"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spnGroup"
+                android:layout_width="139dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/chckbGroup"
+                app:layout_constraintStart_toEndOf="@+id/chckbGroup"
+                app:layout_constraintTop_toTopOf="@+id/chckbGroup" />
+
             <TableLayout
+                android:id="@+id/tableLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="8dp"
-                app:layout_constraintRight_toRightOf="parent"
                 android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="8dp"
-                android:id="@+id/tableLayout"
-                app:layout_constraintHorizontal_bias="0.0">
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/chckbGroup">
 
                 <TableRow android:gravity="center">
 
@@ -54,60 +63,62 @@
                         android:id="@+id/labelWho"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Who paid:"
                         android:layout_marginEnd="8dp"
-                        android:textColor="@android:color/white"
-                        android:labelFor="@id/actvWho"/>
+                        android:text="Who paid:"
+                        android:textColor="@android:color/white" />
 
-                    <AutoCompleteTextView
-                        android:id="@+id/actvWho"
-                        style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
+                    <Spinner
+                        android:id="@+id/spnWho"
                         android:layout_width="match_parent"
-                        android:layout_span="1"
-                        android:backgroundTint="@android:color/white"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
-                </TableRow>
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/white"/>
 
+                </TableRow>
 
                 <TableRow android:gravity="center">
 
-                    <RadioGroup
-                        android:id="@+id/rdioGrpForWhom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp">
-
-                        <RadioButton
-                            android:id="@+id/rdioGroup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:buttonTint="@android:color/white"
-                            android:text="Group"
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-
-                        <RadioButton
-                            android:id="@+id/rdioFriend"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:buttonTint="@android:color/white"
-                            android:text="Friend"
-                            android:textColor="@android:color/white"
-                            android:textSize="12sp" />
-                    </RadioGroup>
-
-                    <AutoCompleteTextView
-                        android:id="@+id/actvForWhom"
+                    <View
                         android:layout_width="match_parent"
-                        android:backgroundTint="@android:color/white"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp"
-                        android:visibility="visible" />
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_span="2"
+                        android:background="@color/divider" />
+                </TableRow>
+
+                <TableRow android:gravity="center">
+
+                    <TextView
+                        android:text="For whom:"
+                        android:textColor="@color/white" />
+
+                    <cz.petrkubes.split.ui.main.ui.groups.GroupMemberChipAutocompleteTextView
+                        android:id="@+id/etChipForWhom"
+                        android:backgroundTint="@color/white"
+                        android:textColor="@color/white" />
 
                 </TableRow>
 
+                <TableRow android:gravity="center">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rcvGroupMembers"
+                        app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_span="2" />
+                </TableRow>
+
+                <TableRow android:gravity="center">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_span="2"
+                        android:background="@color/divider" />
+                </TableRow>
 
                 <TableRow android:gravity="center">
 
@@ -140,22 +151,25 @@
                     <LinearLayout
                         android:layout_width="160dp"
                         android:layout_height="wrap_content">
+
                         <EditText
                             android:id="@+id/etWhat"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:backgroundTint="@android:color/white"
                             android:ems="10"
-                            android:layout_weight="2"
                             android:inputType="textPersonName"
                             android:textColor="@android:color/white"
-                            android:textSize="14sp"
-                            android:layout_width="wrap_content" />
+                            android:textSize="14sp" />
 
                         <Spinner
                             android:id="@+id/spnCurrency"
-                            android:layout_weight="1"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:layout_weight="1"
+                            android:backgroundTint="@color/white"
+                            android:minWidth="50dp" />
                     </LinearLayout>
 
                 </TableRow>

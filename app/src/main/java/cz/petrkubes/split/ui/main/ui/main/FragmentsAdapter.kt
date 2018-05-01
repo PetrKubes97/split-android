@@ -15,10 +15,10 @@ import cz.petrkubes.split.ui.main.ui.debt.DebtsFragment
 class FragmentsAdapter(fm: FragmentManager, var context: Context) : FragmentPagerAdapter(fm) {
 
     override fun getItem(i: Int): Fragment {
-        when (i) {
-            0 -> return DebtsFragment()
-            1 -> return FriendsFragment()
-            else -> return SummaryFragment()
+        return when (i) {
+            0 -> DebtsFragment()
+            1 -> FriendsFragment()
+            else -> SummaryFragment()
         }
     }
 
@@ -27,10 +27,10 @@ class FragmentsAdapter(fm: FragmentManager, var context: Context) : FragmentPage
     }
 
     override fun getPageTitle(position: Int): CharSequence {
-        when (position) {
-            0 -> return context.getString(R.string.expenses)
-            1 -> return context.getString(R.string.users)
-            else -> return context.getString(R.string.summary)
+        return when (position) {
+            0 -> context.getString(R.string.expenses)
+            1 -> context.getString(R.string.users)
+            else -> context.getString(R.string.summary)
         }
     }
 }

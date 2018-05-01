@@ -11,11 +11,7 @@ import cz.petrkubes.split.R
 * @since 06/08/2017
 */
 class SummaryFragment : android.support.v4.app.Fragment() {
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (inflater != null) {
-            return inflater.inflate(R.layout.fragment_payments, null)
-        } else {
-            return super.onCreateView(inflater, container, savedInstanceState)
-        }
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_payments, null)
     }
 }
